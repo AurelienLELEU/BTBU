@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://btbu.aurelienleleu.fr/sitemap.xml
