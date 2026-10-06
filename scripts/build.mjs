@@ -84,7 +84,7 @@ function appCard(app, prefix = '') {
   const game = app.id === 'idle-crystal-corp';
   return `<article class="product-card ${cash ? 'cash-card' : game ? 'crystal-card' : 'stock-card'}">
     <a class="product-media" href="${prefix}${destination(app)}" aria-label="Découvrir ${escape(app.name)}">
-      ${game ? `<img class="crystal-art" src="${prefix}assets/crystal-splash.webp" width="1200" height="675" alt="Illustration officielle Idle Crystal Corp : cristal lumineux sur fond de strates cristallines">` : `<div class="cash-art">${appImage(app, prefix)}<span>${escape(app.name)}</span><span class="art-caption">${cash ? 'DEVIS / FACTURES / SÉRÉNITÉ' : 'TICKETS / STOCK / RECETTES'}</span></div>`}
+      ${game ? `<img class="crystal-art" src="${prefix}assets/crystal-splash.webp" width="1200" height="675" alt="Illustration officielle Idle Crystal Corp : cristal lumineux sur fond de strates cristallines">` : `<div class="cash-art">${appImage(app, prefix)}</div>`}
       <span class="media-label">${icon(cash ? 'FileCheck2' : game ? 'Gem' : 'ChefHat')}${escape(app.category)}</span>
     </a>
     <div class="product-info"><div class="product-title"><h3><a href="${prefix}${destination(app)}">${escape(app.name)}</a></h3><a class="icon-link" href="${prefix}${destination(app)}" aria-label="Découvrir ${escape(app.name)}" title="Découvrir ${escape(app.name)}">${icon('ArrowUpRight')}</a></div>
