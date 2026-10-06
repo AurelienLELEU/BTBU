@@ -1,6 +1,6 @@
 # BTBU · Built To Be Used
 
-Site commun de CashDraft et Idle Crystal Corp. Il reprend les informations publiques des deux dépôts, avec un accueil commun, une présentation de chaque application, des guides utilisateurs, une assistance et des pages légales séparées.
+Site commun de CashDraft, Idle Crystal Corp et StockChef. Il reprend les informations documentées des trois dépôts, avec un accueil commun, une présentation de chaque application, des guides utilisateurs, une assistance et des pages légales séparées.
 
 Le site est statique : aucun serveur Node.js, base de données ou compte utilisateur n’est nécessaire en production. Les polices, images et icônes sont locales. Le site ne charge aucun outil publicitaire ou d’analyse et ne dépose aucun cookie. Les publicités AdMob concernent uniquement le jeu, pas le site.
 
@@ -26,9 +26,11 @@ Les images d’origine sont conservées dans `assets/`. La première génératio
 
 Les **CGV et mentions légales sont provisoires**, signalées dans les pages et exclues de l’indexation par `noindex`. Elles n’existaient pas dans les GitHub Pages fournis. Elles ne doivent pas être considérées comme juridiquement validées. Compléter le statut de l’éditeur, son adresse professionnelle, son immatriculation et sa TVA le cas échéant, le directeur de la publication et les coordonnées du médiateur de la consommation si applicable. Faire vérifier leur adéquation au statut réel de l’éditeur, aux offres et aux territoires de distribution avant de retirer les avertissements.
 
-La partie concernant le site dans [la confidentialité](dist/confidentialite/index.html) doit aussi être confirmée : identité de l’hébergeur, journaux techniques, durée de conservation et base juridique. Le nom de domaine enregistré chez OVHcloud ne permet pas de déduire qui héberge le site.
+La partie concernant le site dans [la confidentialité](dist/confidentialite/index.html) doit aussi être confirmée : coordonnées légales de l’hébergeur, journaux techniques, durée de conservation, base juridique et informations applicables aux traitements et transferts. Cloudflare Pages héberge le site ; OVHcloud fournit le nom de domaine.
 
 Les politiques des applications conservent les dates d’origine : 2 octobre 2026 pour CashDraft et 30 septembre 2026 pour Idle Crystal Corp. Les deux e-mails de support sont conservés séparément. Aucun tarif, lien App Store, identifiant d’entreprise ou adresse non fourni n’a été inventé. Les conditions Apple au moment de l’achat font référence pour les prix. Aucun achat n’est proposé sur le site.
+
+StockChef n’avait pas de politique web ni d’URL de support dans son dépôt. Sa politique est une nouvelle rédaction du 6 octobre 2026, fondée sur le texte intégré à l’app et ses fonctions documentées, mais signalée comme provisoire et non indexable. Le contact BTBU `aurelienleleu.pro@gmail.com` est proposé et doit être confirmé. Les prix du document d’achats StockChef sont des propositions, pas des tarifs publiés : ils ne sont pas repris comme prix définitifs sur le site.
 
 ## Publier avec Cloudflare Pages
 
@@ -100,14 +102,34 @@ Pour Idle Crystal Corp :
 
 Les pages communes sont `/documentation/`, `/support/`, `/confidentialite/`, `/conditions/` et `/mentions-legales/`. Chaque répertoire contient un `index.html`, ce qui permet aussi les URL explicites se terminant par ce nom de fichier.
 
+Pour StockChef :
+
+```text
+/stockchef/
+/stockchef/documentation/
+/stockchef/support/
+/stockchef/confidentialite/
+/stockchef/conditions/
+```
+
+Après validation de la politique et activation du domaine, les URL à renseigner dans App Store Connect sont `https://btbu.aurelienleleu.fr/stockchef/support/` et `https://btbu.aurelienleleu.fr/stockchef/confidentialite/`. L’URL marketing peut être `https://btbu.aurelienleleu.fr/stockchef/`.
+
+## Ce qui reste à finaliser
+
+Pour le site, vérifier le dernier déploiement Cloudflare, le domaine personnalisé et le certificat HTTPS. Le CNAME OVH `btbu` doit pointer vers `btbu-website.pages.dev`. Le contrôle DNS effectué depuis ce poste le 6 octobre 2026 ne résout pas le sous-domaine ; ce résultat reste à confirmer dans OVH/Cloudflare et depuis une autre connexion. Compléter les informations professionnelles et de médiation applicables, les coordonnées de l’hébergeur et la confidentialité du site. Valider la nouvelle politique StockChef et son contact avant de retirer les avertissements.
+
+Pour StockChef, le dépôt demande encore les prix et territoires définitifs, la configuration des achats dans App Store Connect et les tests Sandbox. Son rapport QA du 6 octobre confirme la signature et l’installation Debug sur iPhone, mais laisse les tests fonctionnels réels de caméra/galerie/OCR, notifications, achats et sauvegarde chiffrée à exécuter manuellement. Compléter les déclarations de confidentialité, Age Rating et Export Compliance, puis préparer l’archive et TestFlight ; la soumission nécessite une autorisation explicite. Les captures existantes sont intégrées au site sans prétendre que l’application est déjà disponible sur l’App Store.
+
+Après activation des URL, mettre à jour App Store Connect, les liens dans les applications et les anciens GitHub Pages. Ajouter les liens App Store au site lorsque les fiches publiques existent. Si les dépôts d’applications deviennent privés, leurs tickets et documents GitHub ne seront pas accessibles aux visiteurs : garder un support par e-mail public ou prévoir un dépôt public de support.
+
 ## Migrer les GitHub Pages
 
 Après publication et vérification, renseigner les nouvelles URL de support et de confidentialité dans App Store Connect et dans les réglages des applications qui pointent actuellement sur GitHub Pages. Mettre à jour les liens publics des README et les autres fiches de distribution. Garder les anciens GitHub Pages accessibles pendant la transition et y ajouter des liens ou des redirections HTML vers les pages équivalentes du domaine définitif : GitHub Pages ne fournit pas de configuration Apache permettant des redirections HTTP 301 via `.htaccess`.
 
-Les projets CashDraft et IdleCrystalCorp n’ont pas été modifiés. Après activation du site, les anciennes pages pourront pointer vers `https://btbu.aurelienleleu.fr/cashdraft/` et `https://btbu.aurelienleleu.fr/idle-crystal-corp/`. Les détails techniques de développement restent dans les README originaux, accessibles depuis les guides utilisateurs.
+Les projets CashDraft, IdleCrystalCorp et StockChef n’ont pas été modifiés. Après activation du site, les anciennes pages pourront pointer vers `https://btbu.aurelienleleu.fr/cashdraft/` et `https://btbu.aurelienleleu.fr/idle-crystal-corp/`. Les détails techniques de développement restent dans les dépôts originaux, accessibles depuis les guides utilisateurs.
 
 ## Vérifications
 
-`npm test` reconstruit les 17 pages et vérifie les liens internes, ancres, ressources, contacts distincts, éléments essentiels des politiques et avertissements juridiques. Les tests sont dans [tests/site.test.mjs](tests/site.test.mjs).
+`npm test` reconstruit les 22 pages et vérifie les liens internes, ancres, ressources, contacts, éléments essentiels des politiques et avertissements juridiques. Il contrôle aussi que StockChef ne reprend pas les promesses et publicités du jeu. Les tests sont dans [tests/site.test.mjs](tests/site.test.mjs).
 
-Une vérification navigateur a été réalisée sur les 17 pages aux largeurs 320, 390 et 1440 pixels : aucune image manquante, aucun débordement horizontal et aucun titre ou lien tronqué détecté. Les FAQ s’ouvrent nativement, les ressources locales se chargent et le bouton d’impression utilise la fonction du navigateur. Cela ne remplace pas la recette sur l’hébergement final, ni la validation juridique des textes.
+Une vérification navigateur a été réalisée sur les 22 pages aux largeurs 320, 390 et 1440 pixels : aucune image manquante, aucun débordement horizontal et aucun titre ou lien tronqué détecté. Les FAQ s’ouvrent nativement, les ressources locales se chargent et le bouton d’impression utilise la fonction du navigateur. Cela ne remplace pas la recette sur l’hébergement final, ni la validation juridique des textes.

@@ -12,8 +12,8 @@ async function htmlFiles(directory) {
   return groups.flat();
 }
 
-test('Chaque application possède ses cinq pages publiques et un contact distinct', async () => {
-  assert.equal(apps.length, 2);
+test('Chaque application possède ses cinq pages publiques et son contact', async () => {
+  assert.deepEqual(apps.map(app => app.id), ['cashdraft', 'idle-crystal-corp', 'stockchef']);
   assert.notEqual(apps[0].email, apps[1].email);
   for (const app of apps) {
     for (const section of sections) {
@@ -52,7 +52,7 @@ test('Les politiques conservent les éléments sensibles des pages originales', 
 });
 
 test('Les documents juridiques incomplets sont explicitement provisoires et non indexables', async () => {
-  for (const path of ['conditions/index.html', 'mentions-legales/index.html', ...apps.map(app => `${app.id}/conditions/index.html`)]) {
+  for (const path of ['conditions/index.html', 'mentions-legales/index.html', 'stockchef/confidentialite/index.html', ...apps.map(app => `${app.id}/conditions/index.html`)]) {
     const html = await readFile(resolve(output, path), 'utf8');
     assert.match(html, /provisoire/i);
     assert.match(html, /noindex,follow/);
@@ -84,7 +84,28 @@ test('Cloudflare reçoit les en-têtes de sécurité et les URL du domaine de pr
   const sitemap = await readFile(resolve(output, 'sitemap.xml'), 'utf8');
   assert.ok(sitemap.includes(`<loc>${domain}/cashdraft/</loc>`));
   assert.ok(sitemap.includes(`<loc>${domain}/idle-crystal-corp/</loc>`));
+  assert.ok(sitemap.includes(`<loc>${domain}/stockchef/</loc>`));
+  assert.ok(!sitemap.includes(`${domain}/stockchef/confidentialite/`));
   assert.doesNotMatch(sitemap, /conditions|mentions-legales|404/);
   const robots = await readFile(resolve(output, 'robots.txt'), 'utf8');
   assert.ok(robots.includes(`Sitemap: ${domain}/sitemap.xml`));
+});
+
+test('StockChef possède ses propres visuels et ne reprend pas les promesses du jeu', async () => {
+  assert.equal((await htmlFiles(output)).length, 7 + apps.length * sections.length);
+  const home = await readFile(resolve(output, 'index.html'), 'utf8');
+  assert.match(home, /01 — 03/);
+  for (const section of sections) {
+    const html = await readFile(resolve(output, 'stockchef', section.id === 'index' ? '' : section.id, 'index.html'), 'utf8');
+    assert.match(html, /stockchef\.webp/);
+    assert.doesNotMatch(html, /crystal-splash|policies\.google\.com|AdMob|20 bâtiments/);
+  }
+  const guide = await readFile(resolve(output, 'stockchef/documentation/index.html'), 'utf8');
+  assert.match(guide, /L’import remplace/);
+  assert.match(guide, /non chiffré/);
+  assert.match(guide, /sans lui, la sauvegarde chiffrée ne peut pas être restaurée/i);
+  const terms = await readFile(resolve(output, 'stockchef/conditions/index.html'), 'utf8');
+  assert.match(terms, /recharge consommable de 20 scans/);
+  assert.match(terms, /sans abonnement/);
+  assert.doesNotMatch(terms, /Studio|contenu du jeu|Boutique →/);
 });
