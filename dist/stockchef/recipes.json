@@ -1,0 +1,992 @@
+{
+  "schemaVersion": 1,
+  "recipes": [
+    {
+      "id": "6121d576-9efe-3b7b-928b-66a5bf9ad41b",
+      "title": "Bruschettas tomate-pesto",
+      "baseServings": 2,
+      "prepTimeMinutes": 10,
+      "instructions": [
+        "Faites griller le pain.",
+        "Coupez les tomates et assaisonnez-les.",
+        "Tartinez le pesto puis ajoutez les tomates."
+      ],
+      "ingredients": [
+        {
+          "id": "ff731a44-254d-37d6-8fd6-d8be6c62f7e7",
+          "name": "Pain",
+          "baseQuantity": 4,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "cd158fe8-07bc-321d-bc09-7ce9d7da992b",
+          "name": "Tomates",
+          "baseQuantity": 250,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "4c0077a3-a5a7-3a0b-8d54-9a7a911a4697",
+          "name": "Pesto",
+          "baseQuantity": 40,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "95c54072-285b-3666-b5a0-540098e0b98c",
+          "name": "Huile d’olive",
+          "baseQuantity": 10,
+          "unit": "ml",
+          "isPantryStaple": true
+        }
+      ],
+      "dietaryTags": [
+        "Végétarien"
+      ],
+      "allergens": [
+        "Gluten",
+        "Fruits à coque"
+      ],
+      "course": "Entrées"
+    },
+    {
+      "id": "3c29153a-47d4-3fae-94bd-e9481ea64413",
+      "title": "Salade quinoa, avocat et pois chiches",
+      "baseServings": 2,
+      "prepTimeMinutes": 20,
+      "instructions": [
+        "Faites cuire le quinoa puis refroidissez-le.",
+        "Rincez les pois chiches et coupez l'avocat.",
+        "Mélangez avec citron et huile d'olive."
+      ],
+      "ingredients": [
+        {
+          "id": "4d54e380-449f-39f9-950a-6877eee3f9e6",
+          "name": "Quinoa",
+          "baseQuantity": 140,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "5e447153-4bdd-33cd-9e90-1946632144a4",
+          "name": "Pois chiches",
+          "baseQuantity": 250,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "dc1a4c29-4a4a-3f97-b68d-1bc8ad53801e",
+          "name": "Avocats",
+          "baseQuantity": 1,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "6fc4c58e-a730-3df4-bc96-5ba081dc2107",
+          "name": "Citrons",
+          "baseQuantity": 1,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "95c54072-285b-3666-b5a0-540098e0b98c",
+          "name": "Huile d’olive",
+          "baseQuantity": 15,
+          "unit": "ml",
+          "isPantryStaple": true
+        }
+      ],
+      "dietaryTags": [
+        "Végétarien",
+        "Vegan",
+        "Sans gluten"
+      ],
+      "allergens": [],
+      "course": "Entrées"
+    },
+    {
+      "id": "109fcfef-119c-3943-848e-23c172f23f41",
+      "title": "Velouté carotte-coco",
+      "baseServings": 2,
+      "prepTimeMinutes": 30,
+      "instructions": [
+        "Faites revenir les oignons et carottes.",
+        "Couvrez d'eau et laissez mijoter.",
+        "Ajoutez le lait de coco et mixez."
+      ],
+      "ingredients": [
+        {
+          "id": "eb6b3bda-6f8a-3a20-ba13-d1e24b28b549",
+          "name": "Carottes",
+          "baseQuantity": 500,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "55d17afa-caa2-331d-8ae5-d627c78be216",
+          "name": "Oignons",
+          "baseQuantity": 1,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "41c3f231-e45f-3c9f-b86b-80ab63dbfa90",
+          "name": "Lait de coco",
+          "baseQuantity": 200,
+          "unit": "ml",
+          "isPantryStaple": false
+        },
+        {
+          "id": "341029e5-ba7e-397a-8bc0-0d3f6d025da6",
+          "name": "Curry",
+          "baseQuantity": 5,
+          "unit": "g",
+          "isPantryStaple": true
+        }
+      ],
+      "dietaryTags": [
+        "Végétarien",
+        "Vegan",
+        "Sans gluten"
+      ],
+      "allergens": [],
+      "course": "Entrées"
+    },
+    {
+      "id": "e58dcc9a-ad93-3af2-93c2-c95224d7984e",
+      "title": "Pâtes crémeuses aux légumes",
+      "baseServings": 2,
+      "prepTimeMinutes": 20,
+      "instructions": [
+        "Faites cuire les pâtes.",
+        "Faites revenir les courgettes et tomates.",
+        "Ajoutez le lait et le fromage, puis mélangez."
+      ],
+      "ingredients": [
+        {
+          "id": "a3f94527-91ce-3e72-bd52-14069b1d2798",
+          "name": "Pâtes",
+          "baseQuantity": 180,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "2ae46f4b-bbd0-30d4-acd4-9b88d77cf95f",
+          "name": "Courgettes",
+          "baseQuantity": 250,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "cd158fe8-07bc-321d-bc09-7ce9d7da992b",
+          "name": "Tomates",
+          "baseQuantity": 200,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "ec81d505-a49e-34b2-8ba5-6bac75c0c651",
+          "name": "Lait demi-écrémé",
+          "baseQuantity": 150,
+          "unit": "ml",
+          "isPantryStaple": false
+        },
+        {
+          "id": "39da0205-c5f6-327b-bfdb-37f3d0e10c30",
+          "name": "Fromage râpé",
+          "baseQuantity": 60,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "95c54072-285b-3666-b5a0-540098e0b98c",
+          "name": "Huile d’olive",
+          "baseQuantity": 10,
+          "unit": "ml",
+          "isPantryStaple": true
+        }
+      ],
+      "dietaryTags": [
+        "Végétarien"
+      ],
+      "allergens": [
+        "Gluten",
+        "Lait"
+      ],
+      "course": "Plats"
+    },
+    {
+      "id": "93ffe882-c7ad-3ec9-929f-df73d454927b",
+      "title": "Omelette aux tomates",
+      "baseServings": 2,
+      "prepTimeMinutes": 12,
+      "instructions": [
+        "Battez les œufs.",
+        "Faites revenir les tomates.",
+        "Versez les œufs et cuisez à feu doux."
+      ],
+      "ingredients": [
+        {
+          "id": "118bbfac-16b4-337d-9483-e9b726e86724",
+          "name": "Œufs",
+          "baseQuantity": 4,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "cd158fe8-07bc-321d-bc09-7ce9d7da992b",
+          "name": "Tomates",
+          "baseQuantity": 180,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "39da0205-c5f6-327b-bfdb-37f3d0e10c30",
+          "name": "Fromage râpé",
+          "baseQuantity": 40,
+          "unit": "g",
+          "isPantryStaple": false
+        }
+      ],
+      "dietaryTags": [
+        "Végétarien",
+        "Sans gluten"
+      ],
+      "allergens": [
+        "Lait",
+        "Œuf"
+      ],
+      "course": "Plats"
+    },
+    {
+      "id": "13afa80f-1fed-37fb-9b30-7fb7961a60bb",
+      "title": "Poulet coco-curry et riz",
+      "baseServings": 2,
+      "prepTimeMinutes": 30,
+      "instructions": [
+        "Faites cuire le riz.",
+        "Saisissez le poulet avec l'oignon.",
+        "Ajoutez curry et lait de coco, puis laissez réduire."
+      ],
+      "ingredients": [
+        {
+          "id": "f9193a09-b7bb-3730-8d29-329298f969fb",
+          "name": "Poulet",
+          "baseQuantity": 300,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "c3678378-c889-3d6e-86d7-ebf5d9cb89b8",
+          "name": "Riz",
+          "baseQuantity": 160,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "41c3f231-e45f-3c9f-b86b-80ab63dbfa90",
+          "name": "Lait de coco",
+          "baseQuantity": 250,
+          "unit": "ml",
+          "isPantryStaple": false
+        },
+        {
+          "id": "55d17afa-caa2-331d-8ae5-d627c78be216",
+          "name": "Oignons",
+          "baseQuantity": 1,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "341029e5-ba7e-397a-8bc0-0d3f6d025da6",
+          "name": "Curry",
+          "baseQuantity": 8,
+          "unit": "g",
+          "isPantryStaple": true
+        }
+      ],
+      "dietaryTags": [
+        "Sans gluten"
+      ],
+      "allergens": [],
+      "course": "Plats"
+    },
+    {
+      "id": "16a87b70-eefd-341b-babc-4b9432b4ebca",
+      "title": "Chili végétarien express",
+      "baseServings": 2,
+      "prepTimeMinutes": 25,
+      "instructions": [
+        "Faites revenir oignon et poivron.",
+        "Ajoutez haricots rouges, tomates et épices.",
+        "Laissez mijoter puis servez avec le riz."
+      ],
+      "ingredients": [
+        {
+          "id": "9902b94d-f4fc-3350-872b-0baad8eab266",
+          "name": "Haricots rouges",
+          "baseQuantity": 250,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "cd158fe8-07bc-321d-bc09-7ce9d7da992b",
+          "name": "Tomates",
+          "baseQuantity": 300,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "953f5337-8dc2-319f-b7ef-8f8f93321c83",
+          "name": "Poivrons",
+          "baseQuantity": 200,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "55d17afa-caa2-331d-8ae5-d627c78be216",
+          "name": "Oignons",
+          "baseQuantity": 1,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "c3678378-c889-3d6e-86d7-ebf5d9cb89b8",
+          "name": "Riz",
+          "baseQuantity": 150,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "7704e617-58ec-3c35-b5db-6e674ad65954",
+          "name": "Paprika",
+          "baseQuantity": 5,
+          "unit": "g",
+          "isPantryStaple": true
+        }
+      ],
+      "dietaryTags": [
+        "Végétarien",
+        "Vegan",
+        "Sans gluten"
+      ],
+      "allergens": [],
+      "course": "Plats"
+    },
+    {
+      "id": "dbbf39d6-9c66-3223-9ae6-9a3d9f6d2f02",
+      "title": "Saumon citronné, quinoa et épinards",
+      "baseServings": 2,
+      "prepTimeMinutes": 25,
+      "instructions": [
+        "Faites cuire le quinoa.",
+        "Cuisez le saumon à la poêle.",
+        "Faites tomber les épinards et ajoutez le citron."
+      ],
+      "ingredients": [
+        {
+          "id": "78c85089-7227-3d5a-961a-c178ddf6203f",
+          "name": "Saumon",
+          "baseQuantity": 280,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "4d54e380-449f-39f9-950a-6877eee3f9e6",
+          "name": "Quinoa",
+          "baseQuantity": 150,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "5c06c08b-627f-3e7f-87c4-c12accb88983",
+          "name": "Épinards",
+          "baseQuantity": 250,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "6fc4c58e-a730-3df4-bc96-5ba081dc2107",
+          "name": "Citrons",
+          "baseQuantity": 1,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "95c54072-285b-3666-b5a0-540098e0b98c",
+          "name": "Huile d’olive",
+          "baseQuantity": 10,
+          "unit": "ml",
+          "isPantryStaple": true
+        }
+      ],
+      "dietaryTags": [
+        "Sans gluten"
+      ],
+      "allergens": [
+        "Poisson"
+      ],
+      "course": "Plats"
+    },
+    {
+      "id": "b8baf854-cae0-34c5-9ad8-639b391990cf",
+      "title": "Dahl de lentilles corail",
+      "baseServings": 2,
+      "prepTimeMinutes": 30,
+      "instructions": [
+        "Faites revenir l'oignon avec le curry.",
+        "Ajoutez les lentilles, tomates et lait de coco.",
+        "Laissez cuire jusqu'à ce que les lentilles soient fondantes."
+      ],
+      "ingredients": [
+        {
+          "id": "6c2a42a5-6346-3c88-864b-bafe878d770d",
+          "name": "Lentilles",
+          "baseQuantity": 180,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "cd158fe8-07bc-321d-bc09-7ce9d7da992b",
+          "name": "Tomates",
+          "baseQuantity": 300,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "41c3f231-e45f-3c9f-b86b-80ab63dbfa90",
+          "name": "Lait de coco",
+          "baseQuantity": 200,
+          "unit": "ml",
+          "isPantryStaple": false
+        },
+        {
+          "id": "55d17afa-caa2-331d-8ae5-d627c78be216",
+          "name": "Oignons",
+          "baseQuantity": 1,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "341029e5-ba7e-397a-8bc0-0d3f6d025da6",
+          "name": "Curry",
+          "baseQuantity": 8,
+          "unit": "g",
+          "isPantryStaple": true
+        }
+      ],
+      "dietaryTags": [
+        "Végétarien",
+        "Vegan",
+        "Sans gluten"
+      ],
+      "allergens": [],
+      "course": "Plats"
+    },
+    {
+      "id": "5f20d55f-361c-3438-9cf3-6cf5adb36d41",
+      "title": "Wraps thon-avocat",
+      "baseServings": 2,
+      "prepTimeMinutes": 12,
+      "instructions": [
+        "Écrasez l'avocat avec le citron.",
+        "Répartissez thon, salade et avocat dans les tortillas.",
+        "Roulez et servez."
+      ],
+      "ingredients": [
+        {
+          "id": "a21493c9-7ddf-3dd2-bcc8-1e136c6e3d2f",
+          "name": "Tortillas",
+          "baseQuantity": 4,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "0ef36d88-20d2-341d-a22b-bcaa59001dc5",
+          "name": "Thon",
+          "baseQuantity": 200,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "dc1a4c29-4a4a-3f97-b68d-1bc8ad53801e",
+          "name": "Avocats",
+          "baseQuantity": 1,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "277939eb-73dc-3f1d-86d5-7a224ec4ade5",
+          "name": "Salade verte",
+          "baseQuantity": 1,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "6fc4c58e-a730-3df4-bc96-5ba081dc2107",
+          "name": "Citrons",
+          "baseQuantity": 1,
+          "unit": "unités",
+          "isPantryStaple": false
+        }
+      ],
+      "dietaryTags": [],
+      "allergens": [
+        "Gluten",
+        "Poisson"
+      ],
+      "course": "Plats"
+    },
+    {
+      "id": "7f46e713-85b5-3dd2-941e-cd2532cf4f34",
+      "title": "Pancakes banane et avoine",
+      "baseServings": 2,
+      "prepTimeMinutes": 15,
+      "instructions": [
+        "Mixez banane, œufs et flocons.",
+        "Cuisez de petites louches de pâte à la poêle.",
+        "Servez avec un filet de miel."
+      ],
+      "ingredients": [
+        {
+          "id": "ea01a0cb-4552-3441-a60c-850267173e67",
+          "name": "Bananes",
+          "baseQuantity": 2,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "118bbfac-16b4-337d-9483-e9b726e86724",
+          "name": "Œufs",
+          "baseQuantity": 2,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "77fcfebd-0051-38c1-a521-95b939d07ec5",
+          "name": "Flocons d’avoine",
+          "baseQuantity": 100,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "77c30be0-74ba-366b-b6a8-dfa17aeba17c",
+          "name": "Miel",
+          "baseQuantity": 20,
+          "unit": "g",
+          "isPantryStaple": true
+        }
+      ],
+      "dietaryTags": [
+        "Végétarien"
+      ],
+      "allergens": [
+        "Œuf",
+        "Gluten"
+      ],
+      "course": "Desserts"
+    },
+    {
+      "id": "1c9dc240-8310-3b96-95a9-d7b7c40abddf",
+      "title": "Crumble pommes-amandes",
+      "baseServings": 4,
+      "prepTimeMinutes": 40,
+      "instructions": [
+        "Coupez les pommes et placez-les dans un plat.",
+        "Mélangez farine, beurre et amandes.",
+        "Parsemez et enfournez 25 minutes à 180 °C."
+      ],
+      "ingredients": [
+        {
+          "id": "c9c8d5bf-bd80-3147-ad63-8ad5a991b40b",
+          "name": "Pommes",
+          "baseQuantity": 5,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "d00b2a41-660f-3c6c-bdb5-da0dac9233c4",
+          "name": "Farine",
+          "baseQuantity": 150,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "e04e9856-e9e0-3fdc-9832-72a5b270a810",
+          "name": "Beurre",
+          "baseQuantity": 90,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "9fa2815a-d92f-3109-93ff-04a1ac9faf8d",
+          "name": "Amandes",
+          "baseQuantity": 70,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "77c30be0-74ba-366b-b6a8-dfa17aeba17c",
+          "name": "Miel",
+          "baseQuantity": 40,
+          "unit": "g",
+          "isPantryStaple": true
+        }
+      ],
+      "dietaryTags": [
+        "Végétarien"
+      ],
+      "allergens": [
+        "Gluten",
+        "Lait",
+        "Fruits à coque"
+      ],
+      "course": "Desserts"
+    },
+    {
+      "id": "578502ad-af61-36cb-86ff-1a28901f56cf",
+      "title": "Verrines yaourt, fruits rouges et noix",
+      "baseServings": 2,
+      "prepTimeMinutes": 5,
+      "instructions": [
+        "Répartissez les yaourts dans deux verres.",
+        "Ajoutez fruits rouges et noix.",
+        "Terminez avec un peu de miel."
+      ],
+      "ingredients": [
+        {
+          "id": "fe2844ce-b512-3307-86b6-8550bf4ffa49",
+          "name": "Yaourts",
+          "baseQuantity": 2,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "a3445495-1e7e-3a2f-9504-0d73965813a8",
+          "name": "Fruits rouges",
+          "baseQuantity": 180,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "928e9fea-bf19-3533-b537-7f93ccd73a73",
+          "name": "Noix",
+          "baseQuantity": 40,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "77c30be0-74ba-366b-b6a8-dfa17aeba17c",
+          "name": "Miel",
+          "baseQuantity": 20,
+          "unit": "g",
+          "isPantryStaple": true
+        }
+      ],
+      "dietaryTags": [
+        "Végétarien",
+        "Sans gluten"
+      ],
+      "allergens": [
+        "Lait",
+        "Fruits à coque"
+      ],
+      "course": "Desserts"
+    },
+    {
+      "id": "22dae32d-34c1-30ba-958a-80bce139e2db",
+      "title": "Energy balls dattes-amandes",
+      "baseServings": 8,
+      "prepTimeMinutes": 15,
+      "instructions": [
+        "Mixez dattes, amandes et cacao.",
+        "Formez huit bouchées.",
+        "Réservez au frais 30 minutes."
+      ],
+      "ingredients": [
+        {
+          "id": "207ea7d7-c7f5-3c31-928b-324fb40f0583",
+          "name": "Dattes",
+          "baseQuantity": 180,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "9fa2815a-d92f-3109-93ff-04a1ac9faf8d",
+          "name": "Amandes",
+          "baseQuantity": 120,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "78efd67b-c37f-37d5-871b-d215e313ecf6",
+          "name": "Chocolat noir",
+          "baseQuantity": 30,
+          "unit": "g",
+          "isPantryStaple": false
+        }
+      ],
+      "dietaryTags": [
+        "Végétarien",
+        "Vegan",
+        "Sans gluten"
+      ],
+      "allergens": [
+        "Fruits à coque"
+      ],
+      "course": "Encas & à emporter"
+    },
+    {
+      "id": "d2db1195-3d50-38ac-b22c-26b2b4b81ada",
+      "title": "Barres d’avoine, noix et chocolat",
+      "baseServings": 8,
+      "prepTimeMinutes": 35,
+      "instructions": [
+        "Mélangez flocons, noix, miel et chocolat haché.",
+        "Tassez dans un petit moule.",
+        "Cuisez 20 minutes à 170 °C puis découpez froid."
+      ],
+      "ingredients": [
+        {
+          "id": "77fcfebd-0051-38c1-a521-95b939d07ec5",
+          "name": "Flocons d’avoine",
+          "baseQuantity": 220,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "928e9fea-bf19-3533-b537-7f93ccd73a73",
+          "name": "Noix",
+          "baseQuantity": 80,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "78efd67b-c37f-37d5-871b-d215e313ecf6",
+          "name": "Chocolat noir",
+          "baseQuantity": 80,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "77c30be0-74ba-366b-b6a8-dfa17aeba17c",
+          "name": "Miel",
+          "baseQuantity": 100,
+          "unit": "g",
+          "isPantryStaple": false
+        }
+      ],
+      "dietaryTags": [
+        "Végétarien"
+      ],
+      "allergens": [
+        "Gluten",
+        "Fruits à coque"
+      ],
+      "course": "Encas & à emporter"
+    },
+    {
+      "id": "61a5c62c-bf1e-3a1f-b3c8-dd9dce6b043e",
+      "title": "Pudding de chia aux fruits rouges",
+      "baseServings": 2,
+      "prepTimeMinutes": 10,
+      "instructions": [
+        "Mélangez les graines de chia et le lait.",
+        "Laissez gonfler au frais au moins 2 heures.",
+        "Ajoutez les fruits rouges avant de servir."
+      ],
+      "ingredients": [
+        {
+          "id": "97ec0afb-e0ef-3357-97a6-77973d7d352d",
+          "name": "Graines de chia",
+          "baseQuantity": 45,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "ec81d505-a49e-34b2-8ba5-6bac75c0c651",
+          "name": "Lait demi-écrémé",
+          "baseQuantity": 350,
+          "unit": "ml",
+          "isPantryStaple": false
+        },
+        {
+          "id": "a3445495-1e7e-3a2f-9504-0d73965813a8",
+          "name": "Fruits rouges",
+          "baseQuantity": 180,
+          "unit": "g",
+          "isPantryStaple": false
+        }
+      ],
+      "dietaryTags": [
+        "Végétarien",
+        "Sans gluten"
+      ],
+      "allergens": [
+        "Lait"
+      ],
+      "course": "Encas & à emporter"
+    },
+    {
+      "id": "1c5e6750-fd52-371a-9e74-04581f2af8a0",
+      "title": "Houmous minute et crudités",
+      "baseServings": 2,
+      "prepTimeMinutes": 10,
+      "instructions": [
+        "Mixez pois chiches, citron et huile d'olive.",
+        "Ajustez avec un peu d'eau et de sel.",
+        "Servez avec carottes et concombre."
+      ],
+      "ingredients": [
+        {
+          "id": "5e447153-4bdd-33cd-9e90-1946632144a4",
+          "name": "Pois chiches",
+          "baseQuantity": 250,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "6fc4c58e-a730-3df4-bc96-5ba081dc2107",
+          "name": "Citrons",
+          "baseQuantity": 1,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "eb6b3bda-6f8a-3a20-ba13-d1e24b28b549",
+          "name": "Carottes",
+          "baseQuantity": 200,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "e9c68c96-a9c2-3c8e-a57b-310825c4ceee",
+          "name": "Concombre",
+          "baseQuantity": 1,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "95c54072-285b-3666-b5a0-540098e0b98c",
+          "name": "Huile d’olive",
+          "baseQuantity": 20,
+          "unit": "ml",
+          "isPantryStaple": true
+        }
+      ],
+      "dietaryTags": [
+        "Végétarien",
+        "Vegan",
+        "Sans gluten"
+      ],
+      "allergens": [],
+      "course": "Encas & à emporter"
+    },
+    {
+      "id": "8cd007cf-cf54-3590-90f9-9117f65eb91a",
+      "title": "Tartines avocat et œuf",
+      "baseServings": 2,
+      "prepTimeMinutes": 12,
+      "instructions": [
+        "Faites griller le pain.",
+        "Écrasez l'avocat avec le citron.",
+        "Ajoutez les œufs mollets et le poivre."
+      ],
+      "ingredients": [
+        {
+          "id": "ff731a44-254d-37d6-8fd6-d8be6c62f7e7",
+          "name": "Pain",
+          "baseQuantity": 4,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "dc1a4c29-4a4a-3f97-b68d-1bc8ad53801e",
+          "name": "Avocats",
+          "baseQuantity": 1,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "118bbfac-16b4-337d-9483-e9b726e86724",
+          "name": "Œufs",
+          "baseQuantity": 2,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "6fc4c58e-a730-3df4-bc96-5ba081dc2107",
+          "name": "Citrons",
+          "baseQuantity": 1,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "e7a75838-e863-30c0-bbb7-931381a3c392",
+          "name": "Poivre",
+          "baseQuantity": 2,
+          "unit": "g",
+          "isPantryStaple": true
+        }
+      ],
+      "dietaryTags": [
+        "Végétarien"
+      ],
+      "allergens": [
+        "Gluten",
+        "Œuf"
+      ],
+      "course": "Encas & à emporter"
+    },
+    {
+      "id": "a0316792-e8db-38b9-9c26-23fc5d947604",
+      "title": "Smoothie banane, fruits rouges et chia",
+      "baseServings": 2,
+      "prepTimeMinutes": 5,
+      "instructions": [
+        "Placez tous les ingrédients dans un blender.",
+        "Mixez jusqu'à texture lisse.",
+        "Versez dans deux gourdes ou verres."
+      ],
+      "ingredients": [
+        {
+          "id": "ea01a0cb-4552-3441-a60c-850267173e67",
+          "name": "Bananes",
+          "baseQuantity": 2,
+          "unit": "unités",
+          "isPantryStaple": false
+        },
+        {
+          "id": "a3445495-1e7e-3a2f-9504-0d73965813a8",
+          "name": "Fruits rouges",
+          "baseQuantity": 200,
+          "unit": "g",
+          "isPantryStaple": false
+        },
+        {
+          "id": "ec81d505-a49e-34b2-8ba5-6bac75c0c651",
+          "name": "Lait demi-écrémé",
+          "baseQuantity": 300,
+          "unit": "ml",
+          "isPantryStaple": false
+        },
+        {
+          "id": "97ec0afb-e0ef-3357-97a6-77973d7d352d",
+          "name": "Graines de chia",
+          "baseQuantity": 20,
+          "unit": "g",
+          "isPantryStaple": false
+        }
+      ],
+      "dietaryTags": [
+        "Végétarien",
+        "Sans gluten"
+      ],
+      "allergens": [
+        "Lait"
+      ],
+      "course": "Encas & à emporter"
+    }
+  ]
+}

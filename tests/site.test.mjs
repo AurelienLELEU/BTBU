@@ -4,8 +4,20 @@ import { readFile, readdir, access } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { apps, sections, documents } from '../src/content.mjs';
+import { validateRecipeFeed } from '../src/stockchef/validate.mjs';
 
 const output = resolve(dirname(fileURLToPath(import.meta.url)), '../dist');
+test('Le catalogue partagé est publié et les mises à jour invalides sont refusées', async () => {
+  const source = await readFile(resolve(output, '../src/stockchef/recipes.json'), 'utf8');
+  assert.equal(await readFile(resolve(output, 'stockchef/recipes.json'), 'utf8'), source);
+  const feed = JSON.parse(source);
+  validateRecipeFeed(feed);
+  assert.ok(feed.recipes.length > 0);
+  assert.throws(() => validateRecipeFeed({ ...feed, schemaVersion: 2 }));
+  assert.throws(() => validateRecipeFeed({ ...feed, recipes: [] }));
+  assert.throws(() => validateRecipeFeed({ ...feed, recipes: [feed.recipes[0], feed.recipes[0]] }));
+  assert.throws(() => validateRecipeFeed({ ...feed, recipes: [{ ...feed.recipes[0], baseServings: 0 }] }));
+});
 async function htmlFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
   const groups = await Promise.all(entries.map(entry => entry.isDirectory() ? htmlFiles(resolve(directory, entry.name)) : entry.name.endsWith('.html') ? [resolve(directory, entry.name)] : []));

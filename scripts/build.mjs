@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { icons } from 'lucide';
 import sharp from 'sharp';
 import { publisher, apps, sections, documents, salesTerms } from '../src/content.mjs';
+import { validateRecipeFeed } from '../src/stockchef/validate.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const output = resolve(root, 'dist');
@@ -103,6 +104,11 @@ function documentLayout({ app, section, title, introduction, blocks, prefix, not
 }
 
 await mkdir(assetOutput, { recursive: true });
+const recipeFeed = await readFile(resolve(root, 'src/stockchef/recipes.json'), 'utf8');
+if (Buffer.byteLength(recipeFeed, 'utf8') > 2_000_000) throw new Error('Catalogue StockChef : limite de 2 Mo dépassée.');
+validateRecipeFeed(JSON.parse(recipeFeed));
+await mkdir(resolve(output, 'stockchef'), { recursive: true });
+await writeFile(resolve(output, 'stockchef/recipes.json'), recipeFeed);
 await mkdir(sourceAssets, { recursive: true });
 const images = [
   ['cashdraft.png', '../CashDraft/CashDraft/Assets.xcassets/AppIcon.appiconset/Icon-1024.png', 'cashdraft.webp', 256],
