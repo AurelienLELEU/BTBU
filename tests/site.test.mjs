@@ -109,3 +109,10 @@ test('StockChef possède ses propres visuels et ne reprend pas les promesses du 
   assert.match(terms, /sans abonnement/);
   assert.doesNotMatch(terms, /Studio|contenu du jeu|Boutique →/);
 });
+
+test('Les mots-clés sous les logos restent présents sur l’accueil', async () => {
+  const home = await readFile(resolve(output, 'index.html'), 'utf8');
+  assert.ok(home.includes('<span class="art-caption">DEVIS / FACTURES / SÉRÉNITÉ</span>'));
+  assert.ok(home.includes('<span class="art-caption">TICKETS / STOCK / RECETTES</span>'));
+  assert.equal((home.match(/class="art-caption"/g) || []).length, 2);
+});
