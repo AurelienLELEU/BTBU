@@ -12,11 +12,23 @@ test('Le catalogue partagé est publié et les mises à jour invalides sont refu
   assert.equal(await readFile(resolve(output, 'stockchef/recipes.json'), 'utf8'), source);
   const feed = JSON.parse(source);
   validateRecipeFeed(feed);
-  assert.ok(feed.recipes.length > 0);
-  assert.throws(() => validateRecipeFeed({ ...feed, schemaVersion: 2 }));
+  assert.ok(feed.recipes.length >= 46);
+  assert.equal(new Set(feed.recipes.map(recipe => recipe.title.trim().toLocaleLowerCase('fr'))).size, feed.recipes.length);
+  assert.throws(() => validateRecipeFeed({ ...feed, schemaVersion: 3 }));
   assert.throws(() => validateRecipeFeed({ ...feed, recipes: [] }));
   assert.throws(() => validateRecipeFeed({ ...feed, recipes: [feed.recipes[0], feed.recipes[0]] }));
   assert.throws(() => validateRecipeFeed({ ...feed, recipes: [{ ...feed.recipes[0], baseServings: 0 }] }));
+  const imported = feed.recipes.filter(recipe => recipe.source);
+  assert.ok(imported.length >= 27);
+  for (let suffix = 1001; suffix <= 1027; suffix++) {
+    assert.ok(imported.some(recipe => recipe.id === `8c7892ea-72f2-4f7f-a538-ec036acb${suffix}`), `Adaptation absente : ${suffix}`);
+  }
+  assert.ok(imported.every(recipe => recipe.source.license === 'CC BY-SA 4.0'));
+  const recipe = imported[0];
+  assert.throws(() => validateRecipeFeed({ ...feed, schemaVersion: 1 }));
+  assert.throws(() => validateRecipeFeed({ ...feed, recipes: [{ ...recipe, source: { ...recipe.source, attribution: '' } }] }));
+  assert.throws(() => validateRecipeFeed({ ...feed, recipes: [{ ...recipe, source: { ...recipe.source, url: 'javascript:alert(1)' } }] }));
+  assert.throws(() => validateRecipeFeed({ ...feed, recipes: [{ ...recipe, source: { ...recipe.source, licenseURL: 'http://example.com' } }] }));
 });
 async function htmlFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });

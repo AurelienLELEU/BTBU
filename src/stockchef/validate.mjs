@@ -8,10 +8,15 @@ const integer = (value, maximum) => Number.isInteger(value) && value >= 1 && val
 const list = (value, maximum) => Array.isArray(value) && value.length >= 1 && value.length <= maximum;
 const unique = values => values.every(value => typeof value === 'string') && new Set(values.map(value => value.toLowerCase())).size === values.length;
 function requireValid(condition, context) { if (!condition) throw new Error(`Catalogue StockChef invalide : ${context}`); }
+function https(value) {
+  if (!text(value, 2000)) return false;
+  try { const url = new URL(value); return url.protocol === 'https:' && Boolean(url.hostname) && !url.username && !url.password; }
+  catch { return false; }
+}
 
 export function validateRecipeFeed(feed) {
   requireValid(Buffer.byteLength(JSON.stringify(feed), 'utf8') <= 2_000_000, 'limite de 2 Mo');
-  requireValid(feed?.schemaVersion === 1 && list(feed.recipes, 1000), 'version ou recettes');
+  requireValid([1, 2].includes(feed?.schemaVersion) && list(feed.recipes, 1000), 'version ou recettes');
   requireValid(unique(feed.recipes.map(recipe => recipe.id)), 'identifiants de recettes dupliqués');
   for (const recipe of feed.recipes) {
     requireValid(uuid.test(recipe.id) && text(recipe.title, 200), 'identifiant ou titre');
@@ -20,6 +25,12 @@ export function validateRecipeFeed(feed) {
     requireValid(list(recipe.instructions, 100) && recipe.instructions.every(step => text(step, 4000)), `${recipe.title} : étapes`);
     requireValid(Array.isArray(recipe.dietaryTags) && recipe.dietaryTags.every(tag => tags.has(tag)), `${recipe.title} : régimes`);
     requireValid(Array.isArray(recipe.allergens) && recipe.allergens.every(allergen => allergens.has(allergen)), `${recipe.title} : allergènes`);
+    if (recipe.source != null) {
+      requireValid(feed.schemaVersion === 2, `${recipe.title} : version avec attribution`);
+      const source = recipe.source;
+      requireValid(text(source.name, 200) && text(source.license, 100) && text(source.attribution, 1000) && text(source.changes, 1000), `${recipe.title} : attribution`);
+      requireValid(https(source.url) && https(source.licenseURL), `${recipe.title} : liens source et licence`);
+    }
     requireValid(list(recipe.ingredients, 100) && unique(recipe.ingredients.map(ingredient => ingredient.id)), `${recipe.title} : ingrédients`);
     for (const ingredient of recipe.ingredients) {
       requireValid(uuid.test(ingredient.id) && text(ingredient.name, 200) && units.has(ingredient.unit) && typeof ingredient.isPantryStaple === 'boolean', `${recipe.title} : ${ingredient.name}`);

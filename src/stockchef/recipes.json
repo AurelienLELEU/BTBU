@@ -1,6 +1,777 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "recipes": [
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1022",
+      "title": "Croque-monsieur au four",
+      "baseServings": 4, "prepTimeMinutes": 25,
+      "instructions": [
+        "Préchauffez le four à 210 °C. Prévoyez huit tranches de pain de mie pour quatre croques ; le poids indiqué est estimatif.",
+        "Beurrez légèrement les tranches. Garnissez quatre d'entre elles avec le jambon et l'emmental, puis refermez avec les autres.",
+        "Parsemez de gruyère râpé et disposez sur une plaque recouverte de papier cuisson.",
+        "Faites cuire environ 12 minutes, jusqu'à ce que le fromage soit fondu et le pain doré. Vérifiez les étiquettes du pain et du jambon pour les allergènes complémentaires."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000022001", "name": "Pain de mie", "baseQuantity": 200, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000022002", "name": "Jambon", "baseQuantity": 100, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000022003", "name": "Emmental", "baseQuantity": 100, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000022004", "name": "Gruyère", "baseQuantity": 40, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000022005", "name": "Beurre", "baseQuantity": 20, "unit": "g", "isPantryStaple": false }
+      ],
+      "dietaryTags": [], "allergens": ["Gluten", "Lait", "Œuf", "Soja"], "course": "Encas & à emporter",
+      "source": {
+        "name": "Wikilivres · Croque-monsieur", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Croque-monsieur",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; variante au four avec beurre choisie. Poids des tranches, beurre, fromage râpé et durée totale estimés. Œuf et soja signalés par précaution pour les produits industriels. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1023",
+      "title": "Poulet basquaise aux poivrons",
+      "baseServings": 4, "prepTimeMinutes": 90,
+      "instructions": [
+        "Prévoyez un poulet découpé en morceaux, d'environ 1,5 kg. Lavez les légumes, épépinez les poivrons et coupez-les en lanières. Pelez et émincez les oignons et l'ail ; coupez les tomates.",
+        "Dans une grande sauteuse, faites dorer les morceaux de poulet dans l'huile. Retirez-les dans une assiette réservée à la viande encore crue.",
+        "Faites revenir les oignons, les poivrons et l'ail dans la sauteuse. Ajoutez les tomates, le sel et le piment.",
+        "Remettez le poulet dans la sauce, couvrez et laissez mijoter environ une heure. Ajoutez un peu d'eau si nécessaire.",
+        "Vérifiez la cuisson à cœur dans la partie la plus épaisse sans toucher l'os : au moins 74 °C. Servez avec des ustensiles propres, sans réutiliser l'assiette de viande crue."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000023001", "name": "Poulet", "baseQuantity": 1500, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000023002", "name": "Poivrons", "baseQuantity": 400, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000023003", "name": "Tomates", "baseQuantity": 900, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000023004", "name": "Oignons", "baseQuantity": 200, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000023005", "name": "Ail", "baseQuantity": 4, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000023006", "name": "Huile d’olive", "baseQuantity": 45, "unit": "ml", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000023007", "name": "Sel", "baseQuantity": 3, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000023008", "name": "Piment d'Espelette", "baseQuantity": 1, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": ["Sans gluten"], "allergens": [], "course": "Plats",
+      "source": {
+        "name": "Wikilivres · Poulet basquaise", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Poulet_basquaise",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; cuisson sans pression choisie, jambon et accompagnement de riz omis. Poids, assaisonnements et durée totale estimés. Contrôle à cœur et prévention de contamination croisée ajoutés. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1024",
+      "title": "Brandade de morue sans pommes de terre",
+      "baseServings": 6, "prepTimeMinutes": 50,
+      "instructions": [
+        "Utilisez des filets de morue déjà dessalés. Avec de la morue salée, prévoyez séparément le dessalage au réfrigérateur suivant les consignes du vendeur, en renouvelant l'eau ; ce délai n'est pas inclus dans les 50 minutes.",
+        "Placez la morue dans de l'eau froide avec le thym, le laurier et environ 30 ml de jus de citron. Portez à frémissement et pochez environ 10 minutes, jusqu'à cuisson du poisson.",
+        "Égouttez et retirez soigneusement la peau et toutes les arêtes. Émiettez la chair.",
+        "Faites tiédir séparément le lait et l'huile. Incorporez-les progressivement et alternativement à la morue en mélangeant pour obtenir une préparation onctueuse.",
+        "Ajoutez le reste de citron, le poivre et la muscade. Goûtez avant tout ajout de sel. Placez dans un plat adapté au four et faites gratiner environ 10 minutes à 240 °C, en surveillant."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000024001", "name": "Morue dessalée", "baseQuantity": 800, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000024002", "name": "Lait demi-écrémé", "baseQuantity": 400, "unit": "ml", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000024003", "name": "Huile d’olive", "baseQuantity": 400, "unit": "ml", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000024004", "name": "Jus de citron", "baseQuantity": 45, "unit": "ml", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000024005", "name": "Thym", "baseQuantity": 2, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000024006", "name": "Laurier", "baseQuantity": 1, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000024007", "name": "Poivre", "baseQuantity": 1, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000024008", "name": "Muscade", "baseQuantity": 1, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": ["Sans gluten"], "allergens": ["Poisson", "Lait"], "course": "Plats",
+      "source": {
+        "name": "Wikilivres · Brandade de morue", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Brandade_de_morue",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; morue déjà dessalée choisie, dessalage exclu de la durée estimée et croûtons omis. Jus de citron et aromates estimés. Huile principale comptée dans le stock. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1025",
+      "title": "Petites gougères au comté",
+      "baseServings": 6, "prepTimeMinutes": 50,
+      "instructions": [
+        "Préchauffez le four à 180 °C. Portez à ébullition 250 ml d'eau avec le beurre et le sel.",
+        "Hors du feu, ajoutez toute la farine et mélangez vigoureusement. Remettez à feu doux et remuez jusqu'à ce que la pâte se détache des parois.",
+        "Laissez tiédir. Incorporez le comté râpé et le poivre, puis les œufs un à un en mélangeant soigneusement.",
+        "Déposez de petites boules avec deux cuillères sur une plaque recouverte de papier cuisson. Espacez-les suffisamment.",
+        "Faites cuire environ 25 à 30 minutes sans ouvrir le four pendant la cuisson. Les gougères doivent être gonflées et dorées ; prolongez si le cœur est encore pâteux. Servez tiède."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000025001", "name": "Farine", "baseQuantity": 150, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000025002", "name": "Beurre", "baseQuantity": 75, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000025003", "name": "Œufs", "baseQuantity": 4, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000025004", "name": "Comté", "baseQuantity": 125, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000025005", "name": "Sel", "baseQuantity": 2, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000025006", "name": "Poivre", "baseQuantity": 1, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": [], "allergens": ["Gluten", "Lait", "Œuf"], "course": "Entrées",
+      "source": {
+        "name": "Wikilivres · Gougère", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Goug%C3%A8re",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; quantités divisées par quatre, quatre œufs choisis et dorure omise. Sel réduit, portions et durée estimées. Aucun régime végétarien garanti avec le comté à présure animale. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1026",
+      "title": "Cookies aux pépites de chocolat et noix",
+      "baseServings": 12, "prepTimeMinutes": 100,
+      "instructions": [
+        "Travaillez le beurre mou avec le sucre. Séparez le jaune du blanc d'œuf, incorporez le jaune et réservez le blanc au frais pour une autre préparation.",
+        "Ajoutez la farine, la levure et le sel, puis les noix concassées et les pépites. Mélangez pour former une pâte et réfrigérez une heure.",
+        "Préchauffez le four à 200 °C. Formez environ 24 petits disques sur deux plaques couvertes de papier cuisson en les espaçant.",
+        "Faites cuire en deux fournées de 8 à 12 minutes : les bords doivent dorer. Laissez les biscuits se raffermir sur la plaque avant de les déplacer sur une grille.",
+        "Comptez environ deux petits cookies par portion. Vérifiez les allergènes des pépites, notamment la présence de soja."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000026001", "name": "Beurre", "baseQuantity": 250, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000026002", "name": "Sucre", "baseQuantity": 120, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000026003", "name": "Œufs", "baseQuantity": 1, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000026004", "name": "Levure chimique", "baseQuantity": 6, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000026005", "name": "Farine", "baseQuantity": 250, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000026006", "name": "Noix", "baseQuantity": 100, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000026007", "name": "Pépites de chocolat", "baseQuantity": 200, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000026008", "name": "Sel", "baseQuantity": 1, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": ["Végétarien"], "allergens": ["Gluten", "Lait", "Œuf", "Fruits à coque", "Soja"], "course": "Encas & à emporter",
+      "source": {
+        "name": "Wikilivres · Cookies aux pépites de chocolat", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Cookies_aux_p%C3%A9pites_de_chocolat",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; portions de deux cookies précisées. Un œuf compté pour son jaune ; levure, sel et durée totale estimés. Soja signalé par précaution pour les pépites. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1027",
+      "title": "Madeleines au beurre",
+      "baseServings": 6, "prepTimeMinutes": 160,
+      "instructions": [
+        "Faites fondre 90 g de beurre et laissez tiédir. Battez deux œufs entiers avec le sucre, puis ajoutez le jaune du troisième œuf. Réservez son blanc au frais pour une autre préparation.",
+        "Incorporez 125 g de farine, la levure puis le beurre fondu. Laissez reposer la pâte au réfrigérateur pendant deux heures.",
+        "Beurrez et farinez légèrement les empreintes à madeleines avec les quantités restantes. Remplissez-les aux trois quarts.",
+        "Faites cuire 8 à 10 minutes à 200 °C dans un moule métallique, ou 12 à 15 minutes à 190 °C dans un moule en silicone, en respectant aussi les consignes du fabricant. Les madeleines doivent être dorées et cuites au centre.",
+        "Laissez légèrement tiédir avant de démouler. Selon les moules, comptez environ deux à trois madeleines par portion."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000027001", "name": "Œufs", "baseQuantity": 3, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000027002", "name": "Sucre", "baseQuantity": 100, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000027003", "name": "Farine", "baseQuantity": 130, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000027004", "name": "Levure chimique", "baseQuantity": 7, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000027005", "name": "Beurre", "baseQuantity": 95, "unit": "g", "isPantryStaple": false }
+      ],
+      "dietaryTags": ["Végétarien"], "allergens": ["Gluten", "Lait", "Œuf"], "course": "Encas & à emporter",
+      "source": {
+        "name": "Wikilivres · Madeleine", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Madeleine",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées selon les deux œufs entiers et le jaune des ingrédients ; repos optionnel retenu. Trois œufs comptés ; portions, graissage, farine des moules et durée totale estimés. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1016",
+      "title": "Salade de pommes et pois chiches",
+      "baseServings": 4, "prepTimeMinutes": 40,
+      "instructions": [
+        "Égouttez et rincez les pois chiches déjà cuits ; la quantité indiquée correspond au poids égoutté.",
+        "Lavez et épépinez les pommes puis coupez-les en dés. Émincez finement l'oignon et le céleri lavé.",
+        "Mélangez le jus de citron, l'huile, la ciboulette et le basilic hachés, le sel et le poivre.",
+        "Assemblez tous les ingrédients et laissez reposer 20 minutes au réfrigérateur. Servez comme entrée et gardez les restes au frais."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000016001", "name": "Pois chiches", "baseQuantity": 250, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000016002", "name": "Pommes", "baseQuantity": 2, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000016003", "name": "Oignons", "baseQuantity": 100, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000016004", "name": "Céleri", "baseQuantity": 50, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000016005", "name": "Jus de citron", "baseQuantity": 30, "unit": "ml", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000016006", "name": "Huile d’olive", "baseQuantity": 30, "unit": "ml", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000016007", "name": "Ciboulette", "baseQuantity": 5, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000016008", "name": "Basilic", "baseQuantity": 5, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000016009", "name": "Sel", "baseQuantity": 2, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000016010", "name": "Poivre", "baseQuantity": 1, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": ["Végétarien", "Vegan", "Sans gluten"], "allergens": ["Céleri"], "course": "Entrées",
+      "source": {
+        "name": "Wikilivres · Salade de pommes et pois chiches", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Salade_de_pommes_et_pois_chiches",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; pois chiches déjà cuits choisis et quantités rééquilibrées, notamment l'oignon. Portions, assaisonnements et repos estimés. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1017",
+      "title": "Taboulé de quinoa aux légumes",
+      "baseServings": 4, "prepTimeMinutes": 45,
+      "instructions": [
+        "Rincez le quinoa puis faites-le cuire selon les indications du paquet, environ 10 à 15 minutes. Égouttez si nécessaire et refroidissez-le rapidement.",
+        "Lavez les légumes. Pelez les carottes, épépinez le poivron et taillez-les en fines allumettes. Plongez-les 3 minutes dans l'eau bouillante, puis égouttez et refroidissez.",
+        "Hachez très finement l'oignon. Mélangez-le à l'huile d'olive, au jus de citron, au sel et au poivre.",
+        "Mélangez le quinoa froid, les légumes et la vinaigrette. Ajoutez la ciboulette et réservez au réfrigérateur jusqu'au service."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000017001", "name": "Quinoa", "baseQuantity": 200, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000017002", "name": "Carottes", "baseQuantity": 200, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000017003", "name": "Oignons", "baseQuantity": 100, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000017004", "name": "Poivrons", "baseQuantity": 200, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000017005", "name": "Huile d’olive", "baseQuantity": 30, "unit": "ml", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000017006", "name": "Jus de citron", "baseQuantity": 20, "unit": "ml", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000017007", "name": "Ciboulette", "baseQuantity": 5, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000017008", "name": "Sel", "baseQuantity": 2, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000017009", "name": "Poivre", "baseQuantity": 1, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": ["Végétarien", "Vegan", "Sans gluten"], "allergens": [], "course": "Encas & à emporter",
+      "source": {
+        "name": "Wikilivres · Taboulé au quinoa", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Taboul%C3%A9_au_quinoa",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; vinaigrette au citron précisée. Poids des légumes, assaisonnements, portions et durée estimés ; refroidissement ajouté. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1018",
+      "title": "Potage aux lentilles corail et carottes",
+      "baseServings": 6, "prepTimeMinutes": 45,
+      "instructions": [
+        "Pelez et émincez l'oignon et l'ail. Lavez les carottes, pelez-les et coupez-les en rondelles. Rincez les lentilles.",
+        "Faites revenir l'oignon, l'ail et les carottes dans l'huile pendant 5 minutes.",
+        "Ajoutez les lentilles, le bouillon de légumes et le thym. Choisissez un bouillon entièrement végétal et vérifiez ses allergènes, notamment céleri et gluten.",
+        "Portez à frémissement puis laissez cuire à la casserole 25 à 30 minutes, jusqu'à ce que les carottes et les lentilles soient tendres. Remuez régulièrement et ajustez la quantité d'eau si nécessaire.",
+        "Retirez les tiges de thym, poivrez et mixez si vous préférez une texture lisse. Goûtez avant de saler : le bouillon peut déjà être salé."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000018001", "name": "Lentilles corail", "baseQuantity": 300, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000018002", "name": "Bouillon de légumes", "baseQuantity": 2, "unit": "L", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000018003", "name": "Oignons", "baseQuantity": 1, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000018004", "name": "Ail", "baseQuantity": 1, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000018005", "name": "Carottes", "baseQuantity": 300, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000018006", "name": "Huile d’olive", "baseQuantity": 15, "unit": "ml", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000018007", "name": "Thym", "baseQuantity": 2, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000018008", "name": "Poivre", "baseQuantity": 1, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": ["Végétarien", "Vegan"], "allergens": ["Céleri", "Gluten"], "course": "Plats",
+      "source": {
+        "name": "Wikilivres · Potage aux lentilles corail", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Potage_aux_lentilles_corail",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées pour une casserole sans pression ; croûtons omis. Portions, poids des carottes, assaisonnements et durée estimés. Allergènes du bouillon signalés par précaution. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1019",
+      "title": "Gaspacho frais aux légumes",
+      "baseServings": 4, "prepTimeMinutes": 180,
+      "instructions": [
+        "Réservez un tiers du pain pour les croûtons. Mixez le reste avec l'ail, le sel et l'huile, puis laissez reposer 30 minutes au frais.",
+        "Lavez les légumes, pelez le concombre et l'oignon et épépinez le poivron. Réservez un tiers des légumes en petits dés.",
+        "Mixez les autres légumes avec la préparation au pain. Ajoutez le vinaigre et environ 500 ml d'eau, progressivement, pour ajuster la texture.",
+        "Laissez reposer au moins deux heures au réfrigérateur. Grillez le pain réservé pour faire des croûtons.",
+        "Remuez, poivrez et servez bien frais avec les dés de légumes et les croûtons. Vérifiez les allergènes du pain et les sulfites du vinaigre."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000019001", "name": "Pain", "baseQuantity": 90, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000019002", "name": "Ail", "baseQuantity": 3, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000019003", "name": "Tomates", "baseQuantity": 500, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000019004", "name": "Poivrons", "baseQuantity": 1, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000019005", "name": "Concombre", "baseQuantity": 1, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000019006", "name": "Oignons", "baseQuantity": 1, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000019007", "name": "Huile d’olive", "baseQuantity": 60, "unit": "ml", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000019008", "name": "Vinaigre de xérès", "baseQuantity": 30, "unit": "ml", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000019009", "name": "Sel", "baseQuantity": 3, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000019010", "name": "Poivre", "baseQuantity": 1, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": ["Végétarien"], "allergens": ["Gluten", "Sulfites"], "course": "Entrées",
+      "source": {
+        "name": "Wikilivres · Gaspacho", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Gaspacho",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; mixeur utilisé et filtrage omis. Portions, pain, conversions des cuillères et durée totale estimés. Sulfites signalés par précaution pour le vinaigre. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1020",
+      "title": "Fondue de poireaux au fromage blanc",
+      "baseServings": 4, "prepTimeMinutes": 40,
+      "instructions": [
+        "Pelez et hachez les échalotes. Fendez les poireaux et lavez-les soigneusement, puis émincez-les.",
+        "Faites fondre le beurre et laissez doucement blondir les échalotes.",
+        "Ajoutez les poireaux, le sel et le poivre. Couvrez et laissez cuire à feu doux environ 20 minutes en remuant ; ajoutez un peu d'eau si le fond sèche.",
+        "Retirez le couvercle pour laisser évaporer l'excédent d'eau. Hors du feu, incorporez le fromage blanc. Servez comme accompagnement."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000020001", "name": "Poireaux", "baseQuantity": 3, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000020002", "name": "Échalotes", "baseQuantity": 2, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000020003", "name": "Beurre", "baseQuantity": 25, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000020004", "name": "Fromage blanc", "baseQuantity": 20, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000020005", "name": "Sel", "baseQuantity": 2, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000020006", "name": "Poivre", "baseQuantity": 1, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": ["Végétarien", "Sans gluten"], "allergens": ["Lait"], "course": "Plats",
+      "source": {
+        "name": "Wikilivres · Fondue de poireaux à la crème", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Fondue_de_poireaux_%C3%A0_la_cr%C3%A8me",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; titre aligné sur le fromage blanc réellement utilisé dans la source. Portions, durée totale et assaisonnements estimés. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1021",
+      "title": "Paillassons de pommes de terre",
+      "baseServings": 4, "prepTimeMinutes": 45,
+      "instructions": [
+        "Pelez et râpez les pommes de terre. Pressez-les dans un linge propre pour retirer l'excédent d'eau. Hachez l'oignon.",
+        "Battez les œufs avec le sel, le poivre, le paprika et la muscade, puis incorporez les pommes de terre et l'oignon.",
+        "Chauffez l'huile dans une poêle et déposez de petits tas de préparation. Aplatissez-les en galettes de moins de 1 cm d'épaisseur.",
+        "Faites dorer 2 à 3 minutes de chaque côté, puis poursuivez à feu modéré, à couvert, environ 5 minutes. Les pommes de terre doivent être tendres et l'œuf cuit ; prolongez si nécessaire. Répétez en plusieurs fournées et servez en accompagnement."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000021001", "name": "Pommes de terre", "baseQuantity": 500, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000021002", "name": "Oignons", "baseQuantity": 100, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000021003", "name": "Œufs", "baseQuantity": 2, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000021004", "name": "Huile d’olive", "baseQuantity": 30, "unit": "ml", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000021005", "name": "Sel", "baseQuantity": 3, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000021006", "name": "Poivre", "baseQuantity": 1, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000021007", "name": "Paprika", "baseQuantity": 2, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000021008", "name": "Muscade", "baseQuantity": 1, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": ["Végétarien", "Sans gluten"], "allergens": ["Œuf"], "course": "Plats",
+      "source": {
+        "name": "Wikilivres · Paillassons de pommes de terre", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Paillassons_de_pommes_de_terre",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; quantités rééquilibrées pour quatre portions d'accompagnement. Essorage et cuisson à cœur ajoutés ; durées et assaisonnements estimés. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1010",
+      "title": "Clafoutis aux cerises",
+      "baseServings": 6, "prepTimeMinutes": 65,
+      "instructions": [
+        "Préchauffez le four à 180 °C. Lavez, équeutez et dénoyautez les cerises. Beurrez un plat avec une petite partie du beurre.",
+        "Battez les œufs avec le sucre et le sel. Incorporez la farine puis le lait progressivement pour obtenir une pâte lisse.",
+        "Répartissez les cerises dans le plat, versez la pâte puis ajoutez le reste du beurre en petits morceaux.",
+        "Enfournez environ 45 minutes : le centre doit être pris et la pointe d'un couteau ressortir propre. Parsemez de sucre vanillé. Laissez tiédir avant de servir ; conservez ensuite au réfrigérateur."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000010001", "name": "Cerises", "baseQuantity": 500, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000010002", "name": "Œufs", "baseQuantity": 4, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000010003", "name": "Sucre", "baseQuantity": 125, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000010004", "name": "Farine", "baseQuantity": 80, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000010005", "name": "Lait demi-écrémé", "baseQuantity": 500, "unit": "ml", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000010006", "name": "Sucre vanillé", "baseQuantity": 8, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000010007", "name": "Beurre", "baseQuantity": 40, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000010008", "name": "Sel", "baseQuantity": 1, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": ["Végétarien"], "allergens": ["Gluten", "Lait", "Œuf"], "course": "Desserts",
+      "source": {
+        "name": "Wikilivres · Clafoutis", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Clafoutis",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; dénoyautage et conservation ajoutés. Portions, température, durée totale et poids du sachet estimés. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1011",
+      "title": "Brownies aux noix de pécan",
+      "baseServings": 6, "prepTimeMinutes": 40,
+      "instructions": [
+        "Préchauffez le four à 170 °C. Tapissez de papier cuisson un petit moule carré d'environ 20 cm de côté.",
+        "Faites fondre doucement le chocolat et le beurre au bain-marie, puis laissez tiédir.",
+        "Fouettez les œufs et le sucre. Incorporez le chocolat, la farine puis les noix de pécan grossièrement hachées.",
+        "Versez dans le moule. Faites cuire environ 15 à 20 minutes : le centre doit être pris, sans rester liquide. Adaptez à l'épaisseur du gâteau et laissez refroidir avant de découper.",
+        "Vérifiez l'étiquette du chocolat, notamment la présence éventuelle de soja et d'autres allergènes."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000011001", "name": "Chocolat noir", "baseQuantity": 120, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000011002", "name": "Beurre", "baseQuantity": 125, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000011003", "name": "Œufs", "baseQuantity": 2, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000011004", "name": "Farine", "baseQuantity": 60, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000011005", "name": "Sucre", "baseQuantity": 125, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000011006", "name": "Noix de pécan", "baseQuantity": 50, "unit": "g", "isPantryStaple": false }
+      ],
+      "dietaryTags": ["Végétarien"], "allergens": ["Gluten", "Lait", "Œuf", "Fruits à coque", "Soja"], "course": "Encas & à emporter",
+      "source": {
+        "name": "Wikilivres · Brownies", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Brownies",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; découpe reportée après refroidissement, contrôle de cuisson ajouté. Portions, moule et durées estimés. Soja signalé par précaution pour le chocolat. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1012",
+      "title": "Tarte aux pommes et compote",
+      "baseServings": 8, "prepTimeMinutes": 80,
+      "instructions": [
+        "Étalez la pâte avec son papier cuisson dans un moule et placez-la 10 minutes au réfrigérateur. Préchauffez le four à 180 °C.",
+        "Pelez et épépinez les pommes. Réservez environ la moitié pour la garniture et coupez le reste en petits morceaux.",
+        "Faites compoter les morceaux à couvert, à feu doux, avec 150 g de sucre et le sucre vanillé. Ajoutez un peu d'eau si nécessaire et laissez tiédir.",
+        "Piquez la pâte, étalez la compote puis disposez les pommes réservées en fines tranches. Saupoudrez des 50 g de sucre restants.",
+        "Faites cuire 25 à 35 minutes, jusqu'à ce que la pâte et les pommes soient cuites. Vérifiez les allergènes indiqués sur la pâte."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000012001", "name": "Pâte brisée", "baseQuantity": 1, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000012002", "name": "Pommes", "baseQuantity": 1500, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000012003", "name": "Sucre", "baseQuantity": 200, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000012004", "name": "Sucre vanillé", "baseQuantity": 8, "unit": "g", "isPantryStaple": false }
+      ],
+      "dietaryTags": ["Végétarien"], "allergens": ["Gluten", "Lait", "Œuf"], "course": "Desserts",
+      "source": {
+        "name": "Wikilivres · Tarte aux pommes", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Tarte_aux_pommes",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; papier cuisson employé et répartition des pommes clarifiée. Portions, durée et poids du sachet estimés. Lait et œuf signalés par précaution pour la pâte. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1013",
+      "title": "Crèmes brûlées à la vanille",
+      "baseServings": 4, "prepTimeMinutes": 210,
+      "instructions": [
+        "Séparez les jaunes des blancs d'œufs et réservez les blancs au frais pour une autre préparation. Fouettez les jaunes avec le sucre.",
+        "Fendez la vanille, grattez les graines et chauffez-les avec la crème. Laissez infuser 10 minutes hors du feu puis retirez la gousse.",
+        "Versez progressivement la crème sur les jaunes en remuant. Répartissez dans quatre ramequins résistants au four.",
+        "Placez les ramequins dans un plat contenant de l'eau chaude et faites cuire au bain-marie environ une heure à 130 °C. La crème doit être prise mais légèrement tremblotante au centre.",
+        "Laissez tiédir puis placez au réfrigérateur au moins deux heures. Juste avant de servir, saupoudrez de cassonade et caramélisez avec un chalumeau de cuisine, sur une surface résistante à la chaleur."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000013001", "name": "Œufs", "baseQuantity": 5, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000013002", "name": "Sucre", "baseQuantity": 100, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000013003", "name": "Crème liquide", "baseQuantity": 500, "unit": "ml", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000013004", "name": "Vanille", "baseQuantity": 1, "unit": "unités", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000013005", "name": "Cassonade", "baseQuantity": 30, "unit": "g", "isPantryStaple": false }
+      ],
+      "dietaryTags": ["Végétarien", "Sans gluten"], "allergens": ["Lait", "Œuf"], "course": "Desserts",
+      "source": {
+        "name": "Wikilivres · Crème brûlée", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Cr%C3%A8me_br%C3%BBl%C3%A9e",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; cassonade et durée totale estimées, refroidissement compris. Cinq œufs entiers sont comptés pour leurs jaunes. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1014",
+      "title": "Soupe à l'oignon gratinée sans alcool",
+      "baseServings": 6, "prepTimeMinutes": 50,
+      "instructions": [
+        "Pelez et émincez les oignons. Faites-les blondir dans le beurre à feu modéré en remuant régulièrement.",
+        "Ajoutez la farine et remuez 3 minutes. Versez progressivement 1,5 litre d'eau, ajoutez le bouquet garni, le sel, le poivre et la muscade.",
+        "Laissez frémir 15 minutes. Pendant ce temps, grillez le pain puis retirez le bouquet garni de la soupe.",
+        "Versez la soupe dans six bols adaptés au four. Déposez le pain et le gruyère dessus, puis faites gratiner sous le gril 5 à 10 minutes en surveillant. Manipulez les bols chauds avec des protections."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000014001", "name": "Oignons", "baseQuantity": 500, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000014002", "name": "Beurre", "baseQuantity": 25, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000014003", "name": "Farine", "baseQuantity": 15, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000014004", "name": "Bouquet garni", "baseQuantity": 1, "unit": "unités", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000014005", "name": "Pain", "baseQuantity": 125, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000014006", "name": "Gruyère", "baseQuantity": 125, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000014007", "name": "Muscade", "baseQuantity": 1, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000014008", "name": "Sel", "baseQuantity": 4, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000014009", "name": "Poivre", "baseQuantity": 1, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": [], "allergens": ["Gluten", "Lait"], "course": "Entrées",
+      "source": {
+        "name": "Wikilivres · Soupe à l'oignon", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Soupe_%C3%A0_l%27oignon",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; variante à l'eau de la source choisie, alcool omis. Poids du pain, farine, assaisonnements et durée estimés. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1015",
+      "title": "Crème anglaise maison",
+      "baseServings": 6, "prepTimeMinutes": 90,
+      "instructions": [
+        "Séparez les jaunes des blancs de quatre œufs. Réservez les blancs au frais pour une autre recette.",
+        "Chauffez le lait avec la gousse de vanille fendue et ses graines. Fouettez les jaunes avec le sucre.",
+        "Versez progressivement le lait chaud sur les jaunes en fouettant. Reversez dans la casserole et faites épaissir à feu doux en remuant sans arrêt.",
+        "Visez 82 à 85 °C avec un thermomètre de cuisine, sans faire bouillir. La crème doit napper la cuillère.",
+        "Retirez la gousse, filtrez la crème puis refroidissez-la rapidement dans un récipient placé dans de l'eau froide. Réfrigérez avant de servir en accompagnement d'un dessert."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000015001", "name": "Lait demi-écrémé", "baseQuantity": 500, "unit": "ml", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000015002", "name": "Œufs", "baseQuantity": 4, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000015003", "name": "Sucre", "baseQuantity": 75, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000015004", "name": "Vanille", "baseQuantity": 1, "unit": "unités", "isPantryStaple": true }
+      ],
+      "dietaryTags": ["Végétarien", "Sans gluten"], "allergens": ["Lait", "Œuf"], "course": "Desserts",
+      "source": {
+        "name": "Wikilivres · Crème anglaise", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Cr%C3%A8me_anglaise",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; recette ramenée à 500 ml de lait avec choix dans les fourchettes de la source. Refroidissement rapide ajouté ; portions et durée estimées. Quatre œufs comptés pour leurs jaunes. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1007",
+      "title": "Quiche lorraine généreuse",
+      "baseServings": 6,
+      "prepTimeMinutes": 80,
+      "instructions": [
+        "Préchauffez le four à 180 °C. Déroulez la pâte dans un moule à tarte et piquez le fond.",
+        "Recouvrez de papier cuisson et de poids de cuisson. Faites précuire la pâte pendant 15 à 20 minutes, puis retirez le papier et les poids.",
+        "Faites revenir les lardons à la poêle jusqu'à ce qu'ils soient cuits, puis égouttez-les et répartissez-les sur la pâte.",
+        "Battez les œufs avec la crème. Ajoutez le poivre et la muscade ; les lardons apportent déjà du sel.",
+        "Versez sur les lardons. Enfournez environ 40 minutes, jusqu'à ce que la garniture soit prise au centre. Servez chaud ou conservez au réfrigérateur après refroidissement."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000007001", "name": "Pâte brisée", "baseQuantity": 1, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000007002", "name": "Lardons", "baseQuantity": 200, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000007003", "name": "Crème fraîche", "baseQuantity": 600, "unit": "ml", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000007004", "name": "Œufs", "baseQuantity": 4, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000007005", "name": "Poivre", "baseQuantity": 1, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000007006", "name": "Muscade", "baseQuantity": 1, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": [], "allergens": ["Gluten", "Lait", "Œuf"], "course": "Plats",
+      "source": {
+        "name": "Wikilivres · Quiche lorraine", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Quiche_lorraine",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; les deux crèmes de la source sont regroupées en 600 ml. Portions, durée totale et assaisonnements estimés. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1008",
+      "title": "Gratin dauphinois à la crème",
+      "baseServings": 4,
+      "prepTimeMinutes": 140,
+      "instructions": [
+        "Préchauffez le four à 180 °C. Pelez les pommes de terre et tranchez-les finement, sur environ 2 mm d'épaisseur.",
+        "Frottez le plat avec l'ail. Chauffez le lait avec le reste d'ail haché, le sel, le poivre et la muscade.",
+        "Alternez dans le plat des couches de pommes de terre, de crème et de petits morceaux de beurre. Terminez par les pommes de terre et versez le lait chaud.",
+        "Séparez le jaune d'œuf et badigeonnez-en le dessus. Réservez le blanc au frais pour une autre préparation.",
+        "Faites cuire entre 1 h 30 et 2 h, jusqu'à ce que les pommes de terre soient très tendres et que le liquide ait épaissi. Couvrez si le dessus colore trop vite."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000008001", "name": "Pommes de terre", "baseQuantity": 1000, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000008002", "name": "Crème fraîche", "baseQuantity": 250, "unit": "ml", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000008003", "name": "Lait demi-écrémé", "baseQuantity": 250, "unit": "ml", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000008004", "name": "Ail", "baseQuantity": 1, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000008005", "name": "Œufs", "baseQuantity": 1, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000008006", "name": "Beurre", "baseQuantity": 20, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000008007", "name": "Sel", "baseQuantity": 3, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000008008", "name": "Poivre", "baseQuantity": 1, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000008009", "name": "Muscade", "baseQuantity": 1, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": ["Végétarien", "Sans gluten"], "allergens": ["Lait", "Œuf"], "course": "Plats",
+      "source": {
+        "name": "Wikilivres · Gratin dauphinois", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Gratin_dauphinois",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; température, durée totale, beurre et assaisonnements précisés à titre estimatif. Un œuf est compté pour son jaune. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1009",
+      "title": "Salade de riz au thon et au maïs",
+      "baseServings": 4,
+      "prepTimeMinutes": 35,
+      "instructions": [
+        "Faites cuire le riz selon les indications du paquet. Égouttez-le, refroidissez-le rapidement en couche fine, puis placez-le au réfrigérateur. Ne le laissez pas attendre longtemps à température ambiante.",
+        "Faites cuire les œufs dans l'eau bouillante pendant environ 10 minutes, refroidissez-les puis écalez-les.",
+        "Égouttez le thon et le maïs. Lavez les tomates et coupez-les en morceaux ; coupez les œufs en quartiers.",
+        "Mélangez le riz froid, le thon, les tomates, le maïs et la mayonnaise. Ajoutez les œufs et gardez au frais jusqu'au service. Vérifiez les allergènes de votre mayonnaise."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000009001", "name": "Riz", "baseQuantity": 350, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000009002", "name": "Thon", "baseQuantity": 200, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000009003", "name": "Tomates", "baseQuantity": 3, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000009004", "name": "Maïs", "baseQuantity": 100, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000009005", "name": "Œufs", "baseQuantity": 4, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000009006", "name": "Mayonnaise", "baseQuantity": 60, "unit": "g", "isPantryStaple": false }
+      ],
+      "dietaryTags": [], "allergens": ["Poisson", "Œuf", "Moutarde"], "course": "Entrées",
+      "source": {
+        "name": "Wikilivres · Salade de riz", "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Salade_de_riz",
+        "license": "CC BY-SA 4.0", "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées ; durée et mayonnaise estimées. Conseils de refroidissement et d'allergènes ajoutés. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1001",
+      "title": "Ratatouille aux légumes mijotés",
+      "baseServings": 6,
+      "prepTimeMinutes": 75,
+      "instructions": [
+        "Lavez les légumes. Coupez les aubergines et les courgettes en cubes, les poivrons en lanières, puis émincez les oignons.",
+        "Salez légèrement les aubergines, laissez-les dégorger puis rincez-les et séchez-les. Faites-les revenir dans 20 ml d'huile d'olive et réservez.",
+        "Faites revenir les courgettes avec 20 ml d'huile dans la même sauteuse, puis réservez-les également.",
+        "Faites fondre les oignons avec les 20 ml d'huile restants pendant 10 minutes. Ajoutez les poivrons et poursuivez la cuisson jusqu'à ce qu'ils commencent à ramollir.",
+        "Ajoutez les tomates coupées, les aubergines, les courgettes, l'ail, le thym et le laurier. Laissez mijoter environ 20 minutes, jusqu'à ce que les légumes soient tendres. Retirez le laurier avant de servir."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000001001", "name": "Aubergines", "baseQuantity": 3, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000001002", "name": "Courgettes", "baseQuantity": 2, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000001003", "name": "Poivrons", "baseQuantity": 2, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000001004", "name": "Tomates", "baseQuantity": 400, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000001005", "name": "Ail", "baseQuantity": 2, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000001006", "name": "Oignons", "baseQuantity": 3, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000001007", "name": "Huile d’olive", "baseQuantity": 60, "unit": "ml", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000001008", "name": "Sel", "baseQuantity": 3, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000001009", "name": "Thym", "baseQuantity": 1, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000001010", "name": "Laurier", "baseQuantity": 1, "unit": "unités", "isPantryStaple": true }
+      ],
+      "dietaryTags": ["Végétarien", "Vegan", "Sans gluten"],
+      "allergens": [],
+      "course": "Plats",
+      "source": {
+        "name": "Wikilivres · Ratatouille",
+        "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Ratatouille",
+        "license": "CC BY-SA 4.0",
+        "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées pour StockChef. Portions et durée totale estimées ; huile convertie en ml et assaisonnements quantifiés. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1002",
+      "title": "Guacamole frais",
+      "baseServings": 4,
+      "prepTimeMinutes": 15,
+      "instructions": [
+        "Coupez les avocats en deux, retirez les noyaux et écrasez leur chair à la fourchette.",
+        "Ajoutez le jus des citrons verts et une pincée de sel.",
+        "Émincez finement l'oignon. Coupez la tomate en petits dés et hachez la coriandre.",
+        "Retirez les graines du piment si vous souhaitez un résultat moins relevé, puis hachez-le. Lavez-vous les mains après manipulation.",
+        "Mélangez les légumes et la coriandre avec l'avocat. Servez aussitôt ou conservez au frais jusqu'au service."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000002001", "name": "Avocats", "baseQuantity": 3, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000002002", "name": "Citrons verts", "baseQuantity": 2, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000002003", "name": "Oignons", "baseQuantity": 1, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000002004", "name": "Tomates", "baseQuantity": 1, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000002005", "name": "Piment", "baseQuantity": 1, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000002006", "name": "Coriandre", "baseQuantity": 10, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000002007", "name": "Sel", "baseQuantity": 2, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": ["Végétarien", "Vegan", "Sans gluten"],
+      "allergens": [],
+      "course": "Entrées",
+      "source": {
+        "name": "Wikilivres · Guacamole",
+        "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Guacamole",
+        "license": "CC BY-SA 4.0",
+        "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées. Portions, durée et masse de coriandre estimées ; conseils de manipulation et de service ajoutés. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1003",
+      "title": "Pain perdu anti-gaspi",
+      "baseServings": 4,
+      "prepTimeMinutes": 15,
+      "instructions": [
+        "Versez le lait dans une assiette creuse. Battez les œufs dans une seconde assiette.",
+        "Trempez les tranches de pain rassis dans le lait pour les imbiber sans les défaire, puis passez-les dans les œufs battus.",
+        "Faites fondre un peu de beurre dans une poêle et faites dorer le pain des deux côtés, jusqu'à ce que l'œuf soit bien cuit. Procédez en plusieurs fournées si nécessaire.",
+        "Servez chaud avec la cassonade. Utilisez du pain rassis sain, jamais du pain moisi."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000003001", "name": "Pain", "baseQuantity": 8, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000003002", "name": "Lait demi-écrémé", "baseQuantity": 200, "unit": "ml", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000003003", "name": "Œufs", "baseQuantity": 3, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000003004", "name": "Beurre", "baseQuantity": 20, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000003005", "name": "Cassonade", "baseQuantity": 30, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": ["Végétarien"],
+      "allergens": ["Gluten", "Lait", "Œuf"],
+      "course": "Encas & à emporter",
+      "source": {
+        "name": "Wikilivres · Pain perdu",
+        "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Pain_perdu",
+        "license": "CC BY-SA 4.0",
+        "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées. Quantités précisées pour quatre personnes et temps total estimé ; conseils de cuisson et de sécurité ajoutés. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1004",
+      "title": "Riz au lait à la vanille",
+      "baseServings": 4,
+      "prepTimeMinutes": 45,
+      "instructions": [
+        "Rincez le riz, placez-le dans une casserole et couvrez-le juste d'eau. Chauffez jusqu'à absorption de cette eau.",
+        "Dans une autre casserole, chauffez le lait avec la gousse de vanille fendue.",
+        "Versez le lait chaud sur le riz. Laissez cuire à petits frémissements environ 30 minutes, en remuant régulièrement pour éviter que le fond attache.",
+        "Quand le riz est tendre, incorporez le sucre et retirez la gousse. Répartissez dans quatre bols. Laissez tiédir puis placez au réfrigérateur si vous ne servez pas immédiatement."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000004001", "name": "Riz", "baseQuantity": 150, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000004002", "name": "Lait demi-écrémé", "baseQuantity": 500, "unit": "ml", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000004003", "name": "Vanille", "baseQuantity": 1, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000004004", "name": "Sucre", "baseQuantity": 50, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": ["Végétarien", "Sans gluten"],
+      "allergens": ["Lait"],
+      "course": "Desserts",
+      "source": {
+        "name": "Wikilivres · Riz au lait",
+        "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Riz_au_lait",
+        "license": "CC BY-SA 4.0",
+        "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Adaptation de la recette en poids. Étapes reformulées ; portions, durée totale et quantité de sucre estimées. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1005",
+      "title": "Compote de pommes maison",
+      "baseServings": 4,
+      "prepTimeMinutes": 40,
+      "instructions": [
+        "Pelez les pommes, retirez les trognons et coupez la chair en morceaux.",
+        "Placez-les dans une casserole avec le sucre et un fond d'eau. Faites cuire à feu moyen-doux environ 30 minutes, en remuant souvent et en ajoutant un peu d'eau si nécessaire.",
+        "Lorsque les pommes sont bien tendres, écrasez-les pour une compote avec morceaux ou mixez-les pour une texture lisse.",
+        "Laissez tiédir, puis conservez au réfrigérateur dans un récipient propre."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000005001", "name": "Pommes", "baseQuantity": 4, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000005002", "name": "Sucre", "baseQuantity": 30, "unit": "g", "isPantryStaple": true }
+      ],
+      "dietaryTags": ["Végétarien", "Vegan", "Sans gluten"],
+      "allergens": [],
+      "course": "Desserts",
+      "source": {
+        "name": "Wikilivres · Compote de pommes",
+        "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/Compote_de_pommes",
+        "license": "CC BY-SA 4.0",
+        "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées. Recette ramenée à quatre pommes ; sucre converti approximativement en grammes, durée estimée et fond d'eau ajouté. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
+    {
+      "id": "8c7892ea-72f2-4f7f-a538-ec036acb1006",
+      "title": "Gâteau au yaourt classique",
+      "baseServings": 6,
+      "prepTimeMinutes": 60,
+      "instructions": [
+        "Préchauffez le four à 180 °C. Huilez légèrement un moule et saupoudrez-le d'un peu de farine.",
+        "Dans un saladier, fouettez le yaourt, les œufs et le sucre jusqu'à obtenir un mélange homogène.",
+        "Ajoutez l'huile, puis incorporez la farine et la levure sans trop travailler la pâte.",
+        "Versez dans le moule et enfournez pendant 30 à 40 minutes. Vérifiez la cuisson avec la pointe d'un couteau : elle doit ressortir sans pâte crue.",
+        "Laissez le gâteau tiédir avant de le démouler et de le découper en six parts."
+      ],
+      "ingredients": [
+        { "id": "10c8647a-6b28-4d93-b7a2-700000006001", "name": "Yaourts", "baseQuantity": 1, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000006002", "name": "Farine", "baseQuantity": 150, "unit": "g", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000006003", "name": "Sucre", "baseQuantity": 200, "unit": "g", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000006004", "name": "Œufs", "baseQuantity": 3, "unit": "unités", "isPantryStaple": false },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000006005", "name": "Huile neutre", "baseQuantity": 60, "unit": "ml", "isPantryStaple": true },
+        { "id": "10c8647a-6b28-4d93-b7a2-700000006006", "name": "Levure chimique", "baseQuantity": 11, "unit": "g", "isPantryStaple": false }
+      ],
+      "dietaryTags": ["Végétarien"],
+      "allergens": ["Gluten", "Lait", "Œuf"],
+      "course": "Desserts",
+      "source": {
+        "name": "Wikilivres · Gâteau au yaourt",
+        "url": "https://fr.wikibooks.org/wiki/Livre_de_cuisine/G%C3%A2teau_au_yaourt",
+        "license": "CC BY-SA 4.0",
+        "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "attribution": "Adapté des contributeurs de Wikilivres ; auteurs et historique accessibles depuis la page source.",
+        "changes": "Étapes reformulées. Mesures en pots converties approximativement pour un yaourt de 125 g ; sachet de levure fixé à 11 g, six portions estimées. Cette adaptation reste sous CC BY-SA 4.0."
+      }
+    },
     {
       "id": "6121d576-9efe-3b7b-928b-66a5bf9ad41b",
       "title": "Bruschettas tomate-pesto",
