@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, copyFile, cp } from 'node:fs/promises';
 import { dirname, resolve, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { icons } from 'lucide';
@@ -109,6 +109,10 @@ if (Buffer.byteLength(recipeFeed, 'utf8') > 2_000_000) throw new Error('Catalogu
 validateRecipeFeed(JSON.parse(recipeFeed));
 await mkdir(resolve(output, 'stockchef'), { recursive: true });
 await writeFile(resolve(output, 'stockchef/recipes.json'), recipeFeed);
+await cp(resolve(root, 'src/packs'), resolve(output, 'packs'), {
+  recursive: true,
+  force: true,
+});
 await mkdir(sourceAssets, { recursive: true });
 const images = [
   ['cashdraft.png', '../CashDraft/CashDraft/Assets.xcassets/AppIcon.appiconset/Icon-1024.png', 'cashdraft.webp', 256],

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile, readdir, access } from 'node:fs/promises';
+import { readFile, readdir, access, stat } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { apps, sections, documents } from '../src/content.mjs';
@@ -29,6 +29,21 @@ test('Le catalogue partagé est publié et les mises à jour invalides sont refu
   assert.throws(() => validateRecipeFeed({ ...feed, recipes: [{ ...recipe, source: { ...recipe.source, attribution: '' } }] }));
   assert.throws(() => validateRecipeFeed({ ...feed, recipes: [{ ...recipe, source: { ...recipe.source, url: 'javascript:alert(1)' } }] }));
   assert.throws(() => validateRecipeFeed({ ...feed, recipes: [{ ...recipe, source: { ...recipe.source, licenseURL: 'http://example.com' } }] }));
+});
+
+test('Le registre de packs signé et son archive hashée sont publiés', async () => {
+  const manifestPath = resolve(output, 'packs/manifest-v1.json');
+  const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
+  assert.equal(manifest.schema_version, '1.0');
+  assert.equal(manifest.channel, 'stable');
+  assert.equal(manifest.signature_key_id, 'btbu-ed25519-2026-01');
+  assert.match(manifest.signature, /^[A-Za-z0-9+/]+={0,2}$/);
+  assert.equal(manifest.packs.length, 1);
+  const [pack] = manifest.packs;
+  assert.equal(pack.id, 'taxonomy.taxref-v18.fr-en.core');
+  assert.match(pack.sha256, /^[a-f0-9]{64}$/);
+  assert.equal(pack.url, 'https://btbu.aurelienleleu.fr/packs/taxref-v18-nomenclature-1.0.0.btbupack');
+  assert.equal((await stat(resolve(output, 'packs/taxref-v18-nomenclature-1.0.0.btbupack'))).size, pack.size_bytes);
 });
 async function htmlFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
