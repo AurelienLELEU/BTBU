@@ -42,7 +42,7 @@ test('Le registre de packs signé et son archive hashée sont publiés', async (
   const [pack] = manifest.packs;
   assert.equal(pack.id, 'taxonomy.taxref-v18.fr-en.core');
   assert.match(pack.sha256, /^[a-f0-9]{64}$/);
-  assert.equal(pack.url, 'https://btbu.aurelienleleu.fr/packs/taxref-v18-nomenclature-1.0.0.btbupack');
+  assert.equal(pack.url, 'https://aurelienleleu.github.io/BTBU/packs/taxref-v18-nomenclature-1.0.0.btbupack');
   assert.equal((await stat(resolve(output, 'packs/taxref-v18-nomenclature-1.0.0.btbupack'))).size, pack.size_bytes);
 });
 async function htmlFiles(directory) {
@@ -110,7 +110,7 @@ test('Aucun service tiers, traceur ou formulaire ne se charge dans les pages', a
   for (const [, font] of css.matchAll(/url\(([^)]+)\)/g)) await access(resolve(output, 'assets', font));
 });
 
-test('Cloudflare reçoit les en-têtes de sécurité et les URL du domaine de production', async () => {
+test('Le site statique reçoit les en-têtes de sécurité et les URL de production', async () => {
   const domain = (process.env.SITE_URL || 'https://btbu.aurelienleleu.fr').replace(/\/$/, '');
   const headers = await readFile(resolve(output, '_headers'), 'utf8');
   assert.match(headers, /Content-Security-Policy: default-src 'self'/);

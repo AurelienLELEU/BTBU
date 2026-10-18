@@ -71,7 +71,13 @@ $env:SITE_URL = "https://btbu.aurelienleleu.fr"
 npm test
 ```
 
-`SITE_URL` remplace le domaine par défaut dans les liens canoniques, les métadonnées de partage et les adresses du sitemap. Ce projet prévoit une publication à la racine du domaine ou sous-domaine, pas dans un sous-dossier.
+`SITE_URL` remplace le domaine par défaut dans les liens canoniques, les métadonnées de partage et les adresses du sitemap. Il peut inclure un chemin de publication, par exemple `https://aurelienleleu.github.io/BTBU` pour GitHub Pages.
+
+## Publier avec GitHub Pages
+
+Le workflow [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml) reconstruit le site, exécute les tests, puis publie le dossier `dist/` sur GitHub Pages après chaque push sur `main`. Dans **Settings → Pages**, sélectionner **GitHub Actions** comme source. L’URL standard du dépôt est alors `https://aurelienleleu.github.io/BTBU/`; le workflow génère les URL canoniques et le sitemap avec ce préfixe.
+
+Le registre BTBU publié pour l’application Flutter se trouve à `https://aurelienleleu.github.io/BTBU/packs/manifest-v1.json`. Il est signé ; l’application vérifie la signature Ed25519 et le SHA-256 de chaque archive avant activation.
 
 4. Transférer **le contenu de `dist/`**, y compris le fichier caché `.htaccess`, dans le répertoire racine configuré de l’hébergement. Ne pas transférer `node_modules/`, les sources ni les dépôts d’applications. Ne pas supprimer un autre site présent sans vérifier sa destination.
 5. Après activation effective du certificat, activer la redirection vers HTTPS et vers le nom de domaine principal dans l’hébergement. Tester le domaine et `www`, l’ouverture directe des pages ci-dessous, les polices/images, les e-mails de support et une URL inexistante. [src/.htaccess](src/.htaccess) prévoit les en-têtes de sécurité et une page 404 pour Apache ; sur un autre serveur, configurer leurs équivalents. Ces réglages serveur ne sont pas vérifiables depuis l’aperçu local.

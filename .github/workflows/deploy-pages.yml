@@ -26,6 +26,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+        env:
+          SITE_URL: https://aurelienleleu.github.io/BTBU
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

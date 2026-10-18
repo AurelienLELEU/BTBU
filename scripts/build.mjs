@@ -11,8 +11,11 @@ const output = resolve(root, 'dist');
 const assetOutput = resolve(output, 'assets');
 const sourceAssets = resolve(root, 'assets');
 const siteUrl = (process.env.SITE_URL || 'https://btbu.aurelienleleu.fr').replace(/\/$/, '');
-if (siteUrl && (new URL(siteUrl).protocol !== 'https:' || new URL(siteUrl).pathname !== '/' || new URL(siteUrl).search || new URL(siteUrl).hash)) {
-  throw new Error('SITE_URL doit être une origine HTTPS, sans chemin, paramètre ni fragment.');
+if (siteUrl) {
+  const parsedSiteUrl = new URL(siteUrl);
+  if (parsedSiteUrl.protocol !== 'https:' || parsedSiteUrl.search || parsedSiteUrl.hash) {
+    throw new Error('SITE_URL doit être une URL HTTPS, sans paramètre ni fragment.');
+  }
 }
 const escape = value => String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 function renderNode([tag, attributes, children = []]) {
@@ -189,7 +192,7 @@ for (const [id, title, introduction, target] of [
 ]) {
   const websiteBlocks = [
     ['Données de navigation', 'Ce site n’utilise ni compte, ni formulaire de collecte, ni publicité, ni outil de mesure d’audience. Les polices et images sont servies localement. Aucun cookie n’est déposé par le code de ce site.'],
-    ['Hébergement et journaux techniques', 'Le site est hébergé avec Cloudflare Pages ; le domaine est enregistré chez OVHcloud. L’hébergeur peut traiter l’adresse IP, la date, les pages demandées et des informations techniques afin de servir les pages et de sécuriser le service. La durée de conservation de ses journaux, la base juridique et les informations applicables aux traitements et transferts doivent être confirmées avant validation définitive de cette politique.'],
+    ['Hébergement et journaux techniques', 'Le site est diffusé avec GitHub Pages. L’hébergeur peut traiter l’adresse IP, la date, les pages demandées et des informations techniques afin de servir les pages et de sécuriser le service. La durée de conservation de ses journaux, la base juridique et les informations applicables aux traitements et transferts doivent être confirmées avant validation définitive de cette politique.'],
     ['E-mails et liens externes', 'Si vous contactez le support par e-mail, les informations que vous transmettez servent à traiter votre demande. N’envoyez que les données utiles. Les liens Apple, Google et GitHub vous dirigent vers des services régis par leurs propres politiques. Pour une question sur ce site, écrivez à aurelienleleu.pro@gmail.com.'],
   ];
   await page({ path: `${id}/index.html`, title, description: introduction, active: id, draft: id === 'conditions', body: `<section class="container hub-head"><p class="eyebrow">BTBU / ${escape(id === 'support' ? 'ASSISTANCE' : id.toUpperCase())}</p><h1>${escape(title)}</h1><p class="lead">${escape(introduction)}</p>${id === 'conditions' ? '<div class="notice warning"><strong>CGV provisoires : informations éditeur et médiation à compléter avant publication définitive.</strong></div>' : ''}</section><section class="container hub-grid" aria-label="Choisir une application">${apps.map(app => `<a class="hub-item" href="../${destination(app, target)}">${appImage(app, '../')}<div><p class="eyebrow">${escape(app.category)}</p><h2>${escape(app.name)}</h2><p>${escape(sections.find(item => item.id === target).label)}</p></div>${icon('ArrowUpRight')}</a>`).join('')}</section>${id === 'confidentialite' ? `<article class="container website-privacy"><p class="eyebrow">LE SITE WEB</p><h2>Et sur ce site ?</h2>${contentBlocks(websiteBlocks)}</article>` : ''}` });
@@ -198,7 +201,7 @@ await page({ path: 'mentions-legales/index.html', title: 'Mentions légales', de
   ['Éditeur', 'Marque : BTBU · Built To Be Used. Contact identifié dans les dépôts : Aurélien LELEU. E-mail : aurelienleleu.pro@gmail.com. Téléphone : 07 77 26 07 34.'],
   ['Adresse du site', `${siteUrl} · Nom de domaine enregistré chez OVHcloud.`],
   ['Identification professionnelle', 'À compléter selon le statut de l’éditeur : raison sociale ou nom professionnel, forme juridique, adresse de l’établissement, immatriculation applicable, numéro de TVA le cas échéant et directeur de la publication. Aucune de ces informations manquantes n’est présumée.'],
-  ['Hébergement', 'Plateforme d’hébergement : Cloudflare Pages. La dénomination légale, l’adresse et les coordonnées de l’entité hébergeuse applicables au service doivent être vérifiées et ajoutées. OVHcloud fournit le nom de domaine, pas l’hébergement de ce site.'],
+  ['Hébergement', 'Plateforme d’hébergement : GitHub Pages. La dénomination légale, l’adresse et les coordonnées de l’entité hébergeuse applicables au service doivent être vérifiées et ajoutées.'],
   ['Propriété intellectuelle', `${apps.map(app => app.name).join(', ')} sont les applications présentées sur ce site. Les contenus et éléments graphiques restent soumis aux droits de leurs titulaires. Les licences applicables au code sont précisées dans les dépôts respectifs.`],
   ['Protection des données et achats', 'Les politiques de confidentialité et conditions de vente sont accessibles séparément pour chaque application. Les achats iOS sont effectués auprès de l’App Store, pas sur ce site.'],
 ])}<p><a href="../confidentialite/index.html">Confidentialité</a> · <a href="../conditions/index.html">Conditions de vente</a> · <a href="../support/index.html">Contacter le support</a></p></article>` });
