@@ -36,14 +36,19 @@ test('Le registre de packs signé et son archive hashée sont publiés', async (
   const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
   assert.equal(manifest.schema_version, '1.0');
   assert.equal(manifest.channel, 'stable');
-  assert.equal(manifest.signature_key_id, 'btbu-ed25519-2026-01');
+  assert.equal(manifest.signature_key_id, 'btbu-ed25519-2026-10-18');
   assert.match(manifest.signature, /^[A-Za-z0-9+/]+={0,2}$/);
-  assert.equal(manifest.packs.length, 1);
-  const [pack] = manifest.packs;
-  assert.equal(pack.id, 'taxonomy.taxref-v18.fr-en.core');
-  assert.match(pack.sha256, /^[a-f0-9]{64}$/);
-  assert.equal(pack.url, 'https://aurelienleleu.github.io/BTBU/packs/taxref-v18-nomenclature-1.0.0.btbupack');
-  assert.equal((await stat(resolve(output, 'packs/taxref-v18-nomenclature-1.0.0.btbupack'))).size, pack.size_bytes);
+  assert.equal(manifest.packs.length, 2);
+  const [taxonomy, model] = manifest.packs;
+  assert.equal(taxonomy.id, 'taxonomy.taxref-v18.fr-en.core');
+  assert.match(taxonomy.sha256, /^[a-f0-9]{64}$/);
+  assert.equal(taxonomy.url, 'https://aurelienleleu.github.io/BTBU/packs/taxref-v18-nomenclature-1.0.0.btbupack');
+  assert.equal((await stat(resolve(output, 'packs/taxref-v18-nomenclature-1.0.0.btbupack'))).size, taxonomy.size_bytes);
+  assert.equal(model.id, 'model.inaturalist.small.v25.01.15');
+  assert.equal(model.kind, 'model_tflite');
+  assert.match(model.sha256, /^[a-f0-9]{64}$/);
+  assert.equal(model.url, 'https://aurelienleleu.github.io/BTBU/packs/inat-small-v25.01.15.tflite.btbupack');
+  assert.equal((await stat(resolve(output, 'packs/inat-small-v25.01.15.tflite.btbupack'))).size, model.size_bytes);
 });
 async function htmlFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
