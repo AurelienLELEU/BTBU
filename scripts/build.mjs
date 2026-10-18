@@ -209,5 +209,5 @@ await page({ path: '404.html', title: 'Page introuvable', description: 'Cette pa
 
 await writeFile(resolve(output, 'robots.txt'), `User-agent: *\nAllow: /\n${siteUrl ? `Sitemap: ${siteUrl}/sitemap.xml\n` : ''}`);
 await writeFile(resolve(output, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${siteUrl ? pages.filter(item => !item.draft).map(item => `<url><loc>${escape(`${siteUrl}/${item.path.replace(/index\.html$/, '')}`)}</loc></url>`).join('') : ''}</urlset>`);
-for (const name of ['.htaccess', '_headers']) await copyFile(resolve(root, 'src', name), resolve(output, name));
+for (const name of ['.htaccess', '_headers', '.nojekyll']) await copyFile(resolve(root, 'src', name), resolve(output, name));
 console.log(`${pages.length} pages générées dans ${relative(root, output).split(sep).join('/')}/. ${siteUrl ? `Domaine : ${siteUrl}` : 'SITE_URL non défini : liens canoniques et sitemap à activer avant mise en ligne.'}`);
