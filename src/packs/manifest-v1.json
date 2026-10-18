@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0",
-  "channel": "stable",
+  "channel": "preview",
   "published_at": "2026-10-18T21:00:00.000Z",
   "expires_at": "2027-10-18T21:00:00.000Z",
   "signature_key_id": "btbu-ed25519-2026-10-18",
-  "signature": "G+NPBjco5XlaHTRV4IfAldxAOXdxGG1IPsjq4dWw8kmE3lAEwkV1S5LScvB8d0GF7OW7CQ0cfChcEbdJwly7BQ==",
+  "signature": "Ls5LXkRfLG/MUmu1CtqLHJN3h4Ww4yHljFICSrYzFO2TG8R9mvXN6DvTZQgvQhd9fNg8VeLbF5jO9BrFspISAA==",
   "packs": [
     {
       "id": "taxonomy.taxref-v18.fr-en.core",

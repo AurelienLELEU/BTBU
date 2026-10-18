@@ -35,7 +35,7 @@ test('Le registre de packs signé et son archive hashée sont publiés', async (
   const manifestPath = resolve(output, 'packs/manifest-v1.json');
   const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
   assert.equal(manifest.schema_version, '1.0');
-  assert.equal(manifest.channel, 'stable');
+  assert.equal(manifest.channel, 'preview');
   assert.equal(manifest.signature_key_id, 'btbu-ed25519-2026-10-18');
   assert.match(manifest.signature, /^[A-Za-z0-9+/]+={0,2}$/);
   assert.equal(manifest.packs.length, 2);
