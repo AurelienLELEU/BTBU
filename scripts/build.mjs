@@ -1,9 +1,10 @@
-import { mkdir, readFile, writeFile, copyFile, cp } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, copyFile, cp, access } from 'node:fs/promises';
 import { dirname, resolve, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { icons } from 'lucide';
 import sharp from 'sharp';
 import { publisher, apps, sections, documents, salesTerms } from '../src/content.mjs';
+import { validateAppRegistry } from '../src/validate-apps.mjs';
 import { validateRecipeFeed } from '../src/stockchef/validate.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -11,6 +12,7 @@ const output = resolve(root, 'dist');
 const assetOutput = resolve(output, 'assets');
 const sourceAssets = resolve(root, 'assets');
 const siteUrl = (process.env.SITE_URL || 'https://btbu.aurelienleleu.fr').replace(/\/$/, '');
+validateAppRegistry(apps, documents);
 if (siteUrl) {
   const parsedSiteUrl = new URL(siteUrl);
   if (parsedSiteUrl.protocol !== 'https:' || parsedSiteUrl.search || parsedSiteUrl.hash) {
@@ -31,7 +33,7 @@ function prefixFor(path) {
   return '../'.repeat(path.split('/').length - 1);
 }
 function appImage(app, prefix, className = '') {
-  return `<img class="app-icon ${className}" src="${prefix}assets/${app.id}.webp" width="96" height="96" alt="Icône ${escape(app.name)}">`;
+  return `<img class="app-icon ${className}" src="${prefix}assets/${app.iconAsset}" width="96" height="96" alt="Icône ${escape(app.name)}">`;
 }
 function shell({ path, title, description, body, app, section, active, draft = false }) {
   const prefix = prefixFor(path);
@@ -59,7 +61,7 @@ function shell({ path, title, description, body, app, section, active, draft = f
 <body class="${app ? `app-${app.id}` : 'studio'}">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
   <header class="site-header"><div class="container header-inner">
-    <a class="brand" href="${link('index.html')}" aria-label="BTBU, accueil">BTBU<span class="brand-dot">.</span><span class="brand-caption">BUILT TO BE USED</span></a>
+    <a class="brand" href="${link('index.html')}" aria-label="BTBU — Built to Be Used, accueil">BTBU<span class="brand-dot">.</span><span class="brand-caption">BUILT TO BE USED</span></a>
     <nav aria-label="Navigation principale">
       <a href="${link('index.html#applications')}" ${active === 'apps' ? 'aria-current="page"' : ''}>Applications</a>
       <a href="${link('documentation/index.html')}" ${active === 'documentation' ? 'aria-current="page"' : ''}>Guides</a>
@@ -69,13 +71,13 @@ function shell({ path, title, description, body, app, section, active, draft = f
   ${appNav}
   <main id="contenu">${body}</main>
   <footer class="site-footer"><div class="container">
-    <div class="footer-top"><div><a class="brand" href="${link('index.html')}">BTBU<span class="brand-dot">.</span></a><p>Built To Be Used.<br>Des applications faites pour servir.</p></div>
+    <div class="footer-top"><div><a class="brand" href="${link('index.html')}">BTBU<span class="brand-dot">.</span></a><p>BTBU — Built to Be Used.<br>Des applications faites pour servir.</p></div>
     <nav aria-label="Applications">${apps.map(item => `<a href="${link(destination(item))}">${escape(item.name)}</a>`).join('')}<a href="${link('support/index.html')}">Nous contacter</a></nav>
     <nav aria-label="Informations légales"><a href="${link('confidentialite/index.html')}">Confidentialité</a><a href="${link('conditions/index.html')}">Conditions de vente</a><a href="${link('mentions-legales/index.html')}">Mentions légales</a></nav></div>
     <div class="footer-bottom"><span>© 2026 BTBU · Aurélien LELEU</span><span>Sans publicité ni traceur sur ce site.</span></div>
   </div></footer>
 </body>
-</html>`;
+</html>`.replace(/[ \t]+$/gm, '');
 }
 async function page(options) {
   const target = resolve(output, options.path);
@@ -83,18 +85,40 @@ async function page(options) {
   await writeFile(target, shell(options));
   pages.push({ path: options.path, draft: options.draft });
 }
+async function assetSourcePath(asset) {
+  const primary = resolve(sourceAssets, asset.source);
+  try {
+    await access(primary);
+    return primary;
+  } catch (error) {
+    if (error.code !== 'ENOENT' || asset.allowSourceFallback !== true || !asset.sourceFallback) throw error;
+    return resolve(sourceAssets, asset.sourceFallback);
+  }
+}
 function appCard(app, prefix = '') {
-  const cash = app.id === 'cashdraft';
-  const game = app.id === 'idle-crystal-corp';
-  return `<article class="product-card ${cash ? 'cash-card' : game ? 'crystal-card' : 'stock-card'}">
-    <a class="product-media" href="${prefix}${destination(app)}" aria-label="Découvrir ${escape(app.name)}">
-      ${game ? `<img class="crystal-art" src="${prefix}assets/crystal-splash.webp" width="1200" height="675" alt="Illustration officielle Idle Crystal Corp : cristal lumineux sur fond de strates cristallines">` : `<div class="cash-art">${appImage(app, prefix)}<span class="art-caption">${cash ? 'DEVIS / FACTURES / SÉRÉNITÉ' : 'TICKETS / STOCK / RECETTES'}</span></div>`}
-      <span class="media-label">${icon(cash ? 'FileCheck2' : game ? 'Gem' : 'ChefHat')}${escape(app.category)}</span>
+  const card = app.card;
+  const cardStyle = `--card-background:${escape(card.background)};--card-caption-color:${escape(card.captionColor || 'inherit')};--card-image-fit:${escape(card.imageFit || 'cover')}`;
+  const artwork = card.kind === 'image'
+    ? `<img class="product-art-image" src="${prefix}assets/${card.image}" width="1200" height="675" alt="${escape(card.imageAlt)}">`
+    : `<div class="product-art-icon">${appImage(app, prefix)}${card.caption ? `<span class="art-caption">${escape(card.caption)}</span>` : ''}</div>`;
+  return `<article class="product-card">
+    <a class="product-media product-media--${escape(card.kind)}" style="${cardStyle}" href="${prefix}${destination(app)}" aria-label="Découvrir ${escape(app.name)}">
+      ${artwork}
+      <span class="media-label">${icon(card.icon)}${escape(app.category)}</span>
     </a>
     <div class="product-info"><div class="product-title"><h3><a href="${prefix}${destination(app)}">${escape(app.name)}</a></h3><a class="icon-link" href="${prefix}${destination(app)}" aria-label="Découvrir ${escape(app.name)}" title="Découvrir ${escape(app.name)}">${icon('ArrowUpRight')}</a></div>
     <p>${escape(app.description)}</p><div class="tag-list">${app.highlights.map(label => `<span>${escape(label)}</span>`).join('')}</div>
+    ${app.status ? `<p class="app-status">${escape(app.status.label)}</p>` : ''}
     <nav class="product-links" aria-label="Ressources ${escape(app.name)}"><a href="${prefix}${destination(app, 'documentation')}">Guide ${icon('ArrowRight')}</a><a href="${prefix}${destination(app, 'confidentialite')}">Confidentialité</a><a href="${prefix}${destination(app, 'support')}">Support</a></nav></div>
   </article>`;
+}
+function renderPageVisual(visual, prefix) {
+  if (!visual) return '';
+  const image = `<img src="${prefix}assets/${visual.image}" width="${visual.width}" height="${visual.height}"${visual.kind === 'screenshot' ? ' loading="lazy"' : ''} alt="${escape(visual.alt)}">`;
+  if (visual.kind === 'screenshot') {
+    return `<section class="${escape(visual.className)}"><div class="container"><p class="eyebrow">${escape(visual.eyebrow)}</p><h2>${escape(visual.heading)}</h2>${image}</div></section>`;
+  }
+  return `<div class="${escape(visual.className)}">${image}</div>`;
 }
 function contentBlocks(blocks) {
   return blocks.map(([heading, ...paragraphs], index) => `<section id="section-${index + 1}" class="text-section"><h2>${escape(heading)}</h2>${paragraphs.map(text => `<p>${escape(text)}</p>`).join('')}</section>`).join('');
@@ -117,20 +141,12 @@ await cp(resolve(root, 'src/packs'), resolve(output, 'packs'), {
   force: true,
 });
 await mkdir(sourceAssets, { recursive: true });
-const images = [
-  ['cashdraft.png', '../CashDraft/CashDraft/Assets.xcassets/AppIcon.appiconset/Icon-1024.png', 'cashdraft.webp', 256],
-  ['idle-crystal-corp.png', '../IdleCrystalCorp/icon.png', 'idle-crystal-corp.webp', 256],
-  ['crystal-splash.png', '../IdleCrystalCorp/assets/splash.png', 'crystal-splash.webp', 1200],
-  ['stockchef.png', '../StockChef/StockChefApp/Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png', 'stockchef.webp', 256],
-  ['stockchef-dashboard.png', '../StockChef/03_app_store/screenshots/fr-FR/iPhone-18-Pro/01-tableau-de-bord.png', 'stockchef-dashboard.webp', 720],
-];
-for (const [localName, original, webName, width] of images) {
-  const localPath = resolve(sourceAssets, localName);
-  try { await readFile(localPath); } catch (error) {
-    if (error.code !== 'ENOENT') throw error;
-    await copyFile(resolve(root, original), localPath);
+for (const app of apps) {
+  for (const asset of app.assets) {
+    const localPath = await assetSourcePath(asset);
+    await readFile(localPath);
+    await sharp(localPath).resize({ width: asset.width, withoutEnlargement: true }).webp({ quality: 88 }).toFile(resolve(assetOutput, asset.output));
   }
-  await sharp(localPath).resize({ width, withoutEnlargement: true }).webp({ quality: 88 }).toFile(resolve(assetOutput, webName));
 }
 await sharp(resolve(sourceAssets, 'cashdraft.png')).resize(48, 48).png().toFile(resolve(assetOutput, 'favicon.png'));
 await sharp(resolve(sourceAssets, 'crystal-splash.png')).resize(1200, 630, { fit: 'contain', background: '#141123' }).jpeg({ quality: 85 }).toFile(resolve(assetOutput, 'social.jpg'));
@@ -139,48 +155,36 @@ for (const [font, weight] of [['dm-sans', 400], ['dm-sans', 500], ['dm-sans', 60
 }
 for (const name of ['styles.css', 'site.js']) await copyFile(resolve(root, `src/${name}`), resolve(assetOutput, name));
 
-await page({ path: 'index.html', title: 'BTBU · Built To Be Used', description: `${apps.map(app => app.name).join(', ')} : les applications BTBU, leurs guides, leur assistance et leurs informations de confidentialité.`, active: 'apps', body: `
-  <section class="home-hero"><div class="container"><p class="eyebrow"><span class="status-dot"></span> LE STUDIO / AURÉLIEN LELEU</p><h1>BTBU<span>.</span></h1><div class="hero-bottom"><div><p class="hero-name">Built To Be Used.</p><p class="hero-description">Des apps qui vont à l’essentiel.<br>Pour votre activité. Pour votre temps libre.</p></div><a class="text-action" href="#applications">Nos applications ${icon('ArrowDown')}</a></div></div></section>
+await page({ path: 'index.html', title: 'BTBU · Built to Be Used', description: `${apps.map(app => app.name).join(', ')} : les applications BTBU, leurs guides, leur assistance et leurs informations de confidentialité.`, active: 'apps', body: `
+  <section class="home-hero"><div class="container"><p class="eyebrow"><span class="status-dot"></span> LE STUDIO / AURÉLIEN LELEU</p><h1>BTBU<span>.</span></h1><div class="hero-bottom"><div><p class="hero-name">BTBU — Built to Be Used.</p><p class="hero-description">Des apps qui vont à l’essentiel.<br>Pour votre activité. Pour votre temps libre.</p></div><a class="text-action" href="#applications">Nos applications ${icon('ArrowDown')}</a></div></div></section>
   <section id="applications" class="applications-section container"><div class="section-heading"><div><p class="eyebrow">DES UNIVERS DIFFÉRENTS. LA MÊME EXIGENCE.</p><h2>Nos applications</h2></div><span class="section-count">01 — ${String(apps.length).padStart(2, '0')}</span></div><div class="product-grid">${apps.map(app => appCard(app)).join('')}</div></section>
   <section class="resource-band"><div class="container resource-inner"><div><p class="eyebrow">À PORTÉE DE MAIN</p><h2>L’essentiel, au même endroit.</h2></div><div class="resource-links"><a href="documentation/index.html">${icon('BookOpen')}<span>Documentation</span>${icon('ArrowUpRight')}</a><a href="support/index.html">${icon('LifeBuoy')}<span>Une question ?</span>${icon('ArrowUpRight')}</a><a href="confidentialite/index.html">${icon('ShieldCheck')}<span>Vos données</span>${icon('ArrowUpRight')}</a></div></div></section>` });
 
 for (const app of apps) {
-  const cash = app.id === 'cashdraft';
-  const game = app.id === 'idle-crystal-corp';
   const prefix = '../';
-  const features = cash ? [
-    ['FileCheck2', 'Devis & factures', 'Du brouillon au PDF partagé, vos documents et vos clients restent à portée de main.'],
-    ['HardDrive', 'Local, d’abord', 'Pas de compte obligatoire ni de serveur CashDraft recevant vos données métier.'],
-    ['Cloud', 'À votre rythme', 'Crédits, Pro Lifetime ou Studio : choisissez selon votre usage. iCloud reste facultatif.'],
-  ] : game ? [
-    ['Gem', 'De la récolte à l’empire', '20 bâtiments, 17 technologies et 31 succès pour développer votre industrie.'],
-    ['Timer', 'Même pendant la pause', 'Retrouvez vos gains hors ligne à votre retour et faites grandir votre production.'],
-    ['Sparkles', 'Jouer sans contrainte', 'Tout le contenu est accessible gratuitement. Publicités et achats restent facultatifs.'],
-  ] : [
-    ['ScanLine', 'Du ticket au stock', 'Analysez et corrigez les lignes de vos tickets avec une reconnaissance de texte locale.'],
-    ['ChefHat', 'Cuisiner ce que vous avez', 'Recettes, quantités par convive et planning pour organiser vos prochains repas.'],
-    ['HardDrive', 'Vos données, sur l’iPhone', 'Inventaire local, exports JSON et sauvegardes chiffrées par le mot de passe que vous choisissez.'],
-  ];
   await page({ path: destination(app), app, section: 'index', title: app.name, description: app.description, body: `
-    <section class="app-hero"><div class="container"><p class="eyebrow">${escape(app.category)} / BTBU</p><div class="app-title">${appImage(app, prefix)}<h1>${escape(app.name)}</h1></div><p class="app-tagline">${escape(app.tagline)}</p><p class="lead">${escape(app.description)}</p><div class="app-actions"><a class="button primary" href="documentation/index.html">${icon('BookOpen')}Consulter le guide ${icon('ArrowRight')}</a><a class="text-action" href="support/index.html">Contacter le support ${icon('ArrowUpRight')}</a></div><p class="platform-note">${icon(game ? 'Gamepad2' : 'Laptop')}${escape(app.platform)} · Aucun téléchargement proposé sur ce site.</p></div></section>
-    ${game ? `<div class="game-visual"><img src="${prefix}assets/crystal-splash.webp" width="1200" height="675" alt="Illustration officielle du jeu Idle Crystal Corp, un cristal lumineux et ses strates"></div>` : app.id === 'stockchef' ? `<section class="stock-visual"><div class="container"><p class="eyebrow">DANS STOCKCHEF</p><h2>Un aperçu de votre cuisine.</h2><img src="${prefix}assets/stockchef-dashboard.webp" width="720" height="1565" loading="lazy" alt="Capture réelle de StockChef : tableau de bord de l’inventaire et des repas sur iPhone"></div></section>` : ''}
-    <section class="container features-section"><h2>${cash ? 'L’essentiel pour votre activité.' : game ? 'La progression, à votre façon.' : 'Moins d’oubli. Plus d’idées.'}</h2><div class="features-grid">${features.map(([symbol, title, text]) => `<div>${icon(symbol)}<h3>${escape(title)}</h3><p>${escape(text)}</p></div>`).join('')}</div></section>
+    <section class="app-hero"><div class="container"><p class="eyebrow">${escape(app.category)} / BTBU</p><div class="app-title">${appImage(app, prefix)}<h1>${escape(app.name)}</h1></div><p class="app-tagline">${escape(app.tagline)}</p><p class="lead">${escape(app.description)}</p>${app.status ? `<div class="notice warning app-development"><strong>${escape(app.status.label)}</strong><p>${escape(app.status.note)}</p></div>` : ''}<div class="app-actions"><a class="button primary" href="documentation/index.html">${icon('BookOpen')}Consulter le guide ${icon('ArrowRight')}</a><a class="text-action" href="support/index.html">Contacter le support ${icon('ArrowUpRight')}</a></div><p class="platform-note">${icon(app.platformIcon || 'Laptop')}${escape(app.platform)} · Aucun téléchargement proposé sur ce site.</p></div></section>
+    ${renderPageVisual(app.pageVisual, prefix)}
+    <section class="container features-section"><h2>${escape(app.featuresHeading)}</h2><div class="features-grid">${app.features.map(([symbol, title, text]) => `<div>${icon(symbol)}<h3>${escape(title)}</h3><p>${escape(text)}</p></div>`).join('')}</div></section>
     <section class="resource-band"><div class="container resource-inner"><div><p class="eyebrow">${escape(app.name)}</p><h2>Les informations utiles.</h2></div><div class="resource-links">${sections.filter(item => item.id !== 'index').map(item => `<a href="${item.id}/index.html">${icon(item.icon)}<span>${escape(item.label)}</span>${icon('ArrowUpRight')}</a>`).join('')}</div></div></section>` });
   const data = documents[app.id];
   for (const section of ['documentation', 'confidentialite', 'conditions']) {
     const blocks = section === 'conditions' ? salesTerms(app) : data[section];
     const titles = { documentation: 'Le guide de votre application.', confidentialite: 'Politique de confidentialité', conditions: 'Conditions générales de vente' };
-    const introductions = { documentation: cash ? 'Configurer, créer, sauvegarder : les étapes essentielles pour utiliser CashDraft.' : game ? 'Récolte, progression, achats et sauvegarde : les repères pour développer votre empire.' : 'Scanner, corriger, cuisiner et sauvegarder : les repères pour organiser vos aliments.', confidentialite: 'Quelles données sont utilisées, où elles sont conservées et qui les traite.', conditions: 'Les conditions relatives aux achats numériques effectués dans l’application.' };
-    const notice = section === 'conditions' ? `<div class="notice warning">${icon('Info')}<div><strong>Version provisoire · à valider avant publication</strong><p>L’adresse professionnelle, le statut et l’immatriculation de l’éditeur ainsi que les informations de médiation, le cas échéant, ne sont pas encore renseignés. Ce texte ne constitue pas une validation juridique.</p></div></div>` : section === 'confidentialite' && app.privacyDraft ? `<div class="notice warning">${icon('Info')}<div><strong>Version provisoire · à confirmer par l’éditeur</strong><p>Ce texte reprend le fonctionnement documenté de l’application. Le contact de confidentialité et l’adéquation à la version distribuée doivent être confirmés avant validation.</p></div></div>` : '';
+    const introductions = { documentation: app.documentationIntro, confidentialite: app.privacyIntro || 'Quelles données sont utilisées, où elles sont conservées et qui les traite.', conditions: app.conditionsIntro || 'Les conditions relatives aux achats numériques effectués dans l’application.' };
+    const notice = section === 'conditions' ? `<div class="notice warning">${icon('Info')}<div><strong>${escape(app.conditionsNoticeTitle || 'Version provisoire · à valider avant publication')}</strong><p>${escape(app.conditionsNotice || 'L’adresse professionnelle, le statut et l’immatriculation de l’éditeur ainsi que les informations de médiation, le cas échéant, ne sont pas encore renseignés. Ce texte ne constitue pas une validation juridique.')}</p></div></div>` : section === 'confidentialite' && app.privacyDraft ? `<div class="notice warning">${icon('Info')}<div><strong>Version provisoire · à confirmer par l’éditeur</strong><p>Ce texte reprend le fonctionnement documenté de l’application. Le contact de confidentialité et l’adéquation à la version distribuée doivent être confirmés avant validation.</p></div></div>` : '';
     let extra = '';
-    if (section === 'confidentialite' && game) extra = `<section class="text-section"><h2>Informations des prestataires</h2><p><a href="https://policies.google.com/privacy">Politique de confidentialité de Google ${icon('ArrowUpRight')}</a></p><p><a href="https://developers.google.com/admob/ios/privacy/data-disclosure">Données du SDK Google Mobile Ads ${icon('ArrowUpRight')}</a></p></section>`;
-    if (section === 'conditions') extra = `<p class="external-links"><a href="https://reportaproblem.apple.com/">Demander un remboursement à Apple ${icon('ArrowUpRight')}</a><a href="https://www.apple.com/legal/internet-services/itunes/fr/terms.html">Conditions des services Apple ${icon('ArrowUpRight')}</a></p>`;
-    if (section === 'documentation') extra = `<div class="notice">${icon('Code2')}<div><strong>Documentation technique</strong><p>Le code et les instructions de développement restent disponibles dans la <a href="${app.documentationUrl || `${app.repository}#readme`}">documentation du dépôt officiel ${icon('ArrowUpRight')}</a>.</p></div></div>`;
-    await page({ path: destination(app, section), app, section, title: `${titles[section]} · ${app.name}`, description: `${sections.find(item => item.id === section).label} de ${app.name}. ${introductions[section]}`, draft: section === 'conditions' || (section === 'confidentialite' && app.privacyDraft), body: documentLayout({ app, section, title: titles[section], introduction: introductions[section], blocks, prefix: '../../', notice, extra, date: section === 'confidentialite' ? app.privacyDate : '' }) });
+    if (section === 'confidentialite' && app.privacyLinks?.length) extra = `<section class="text-section"><h2>Informations des prestataires</h2>${app.privacyLinks.map(([label, url]) => `<p><a href="${escape(url)}">${escape(label)} ${icon('ArrowUpRight')}</a></p>`).join('')}</section>`;
+    if (section === 'conditions' && app.offers.appleLinks) extra = `<p class="external-links"><a href="https://reportaproblem.apple.com/">Demander un remboursement à Apple ${icon('ArrowUpRight')}</a><a href="https://www.apple.com/legal/internet-services/itunes/fr/terms.html">Conditions des services Apple ${icon('ArrowUpRight')}</a></p>`;
+    if (section === 'documentation') extra = app.repositoryPublic
+      ? `<div class="notice">${icon('Code2')}<div><strong>Documentation technique</strong><p>Le code et les instructions de développement restent disponibles dans la <a href="${escape(app.documentationUrl || `${app.repository}#readme`)}">documentation du dépôt officiel ${icon('ArrowUpRight')}</a>.</p></div></div>`
+      : `<div class="notice">${icon('BookOpen')}<div><strong>Documentation disponible sur ce site</strong><p>Le dépôt de développement n’est pas présenté comme une ressource publique. Consultez ce guide pour les informations communiquées aux visiteurs.</p></div></div>`;
+    const pageTitle = section === 'conditions' && app.conditionsTitle ? app.conditionsTitle : titles[section];
+    await page({ path: destination(app, section), app, section, title: `${pageTitle} · ${app.name}`, description: `${sections.find(item => item.id === section).label} de ${app.name}. ${introductions[section]}`, draft: section === 'conditions' || (section === 'confidentialite' && app.privacyDraft), body: documentLayout({ app, section, title: pageTitle, introduction: introductions[section], blocks, prefix: '../../', notice, extra, date: section === 'confidentialite' ? app.privacyDate : '' }) });
   }
-  await page({ path: destination(app, 'support'), app, section: 'support', title: `Assistance · ${app.name}`, description: `Contacter le support ${app.name} et trouver les réponses sur les achats, les données et la progression.`, body: `
-    <section class="container support-head"><p class="eyebrow">${escape(app.name)} / ASSISTANCE</p><h1>Parlons de votre question.</h1><p class="lead">Une difficulté, un achat ou une suggestion ? Contactez directement le support de ${escape(app.name)}.</p>${app.supportDraft ? '<div class="notice warning"><strong>Contact BTBU proposé pour StockChef : à confirmer par l’éditeur.</strong></div>' : ''}</section>
-    <div class="container support-grid"><section class="contact-panel"><p class="eyebrow">PAR E-MAIL</p><h2>Le contact direct.</h2><a class="contact-email" href="mailto:${app.email}?subject=${encodeURIComponent(`${app.name} - Assistance`)}">${escape(app.email)} ${icon('ArrowUpRight')}</a><p>Indiquez votre appareil, la version du système, la version de l’application et les étapes pour reproduire le problème. Une capture d’écran peut être utile.</p><p>Masquez les données personnelles et les informations de paiement inutiles.</p><a class="text-action" href="${app.support}">Ouvrir un ticket GitHub ${icon('ArrowUpRight')}</a><p class="small">Les tickets GitHub sont publics. N’y joignez jamais une facture, des coordonnées bancaires ou une sauvegarde personnelle.</p>${cash ? '<p class="small">Contact : Aurélien LELEU · <a href="tel:+33777260734">07 77 26 07 34</a></p>' : ''}</section>
+  await page({ path: destination(app, 'support'), app, section: 'support', title: `Assistance · ${app.name}`, description: app.supportDescription || `Contacter le support ${app.name} et consulter les questions fréquentes.`, body: `
+    <section class="container support-head"><p class="eyebrow">${escape(app.name)} / ASSISTANCE</p><h1>Parlons de votre question.</h1><p class="lead">${escape(app.supportIntro || `Une difficulté, un achat ou une suggestion ? Contactez directement le support de ${app.name}.`)}</p>${app.supportNote ? `<div class="notice warning"><strong>${escape(app.supportNote)}</strong></div>` : ''}</section>
+    <div class="container support-grid"><section class="contact-panel"><p class="eyebrow">PAR E-MAIL</p><h2>Le contact direct.</h2><a class="contact-email" href="mailto:${escape(app.email)}?subject=${encodeURIComponent(`${app.name} - Assistance`)}">${escape(app.email)} ${icon('ArrowUpRight')}</a><p>${escape(app.supportGuidance || 'Indiquez votre appareil, la version du système, la version de l’application et les étapes pour reproduire le problème. Une capture d’écran peut être utile.')}</p><p>Masquez les données personnelles et les informations sensibles.</p>${app.repositoryPublic ? `<a class="text-action" href="${escape(app.support)}">Ouvrir un ticket GitHub ${icon('ArrowUpRight')}</a><p class="small">Les tickets GitHub sont publics. N’y joignez jamais de données personnelles, de coordonnées bancaires ou de sauvegarde.</p>` : ''}${app.supportPhone ? `<p class="small">Contact : ${escape(publisher.author)} · <a href="tel:${escape(app.supportPhone.href)}">${escape(app.supportPhone.label)}</a></p>` : ''}</section>
     <section class="faq-panel"><h2>Questions fréquentes</h2>${data.faq.map(([question, answer]) => `<details><summary>${escape(question)}${icon('Plus')}</summary><p>${escape(answer)}</p></details>`).join('')}<a class="text-action" href="../documentation/index.html">Consulter la documentation ${icon('ArrowRight')}</a></section></div>` });
 }
 

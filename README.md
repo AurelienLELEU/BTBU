@@ -1,6 +1,6 @@
-# BTBU · Built To Be Used
+# BTBU — Built to Be Used
 
-Site commun de CashDraft, Idle Crystal Corp et StockChef. Il reprend les informations documentées des trois dépôts, avec un accueil commun, une présentation de chaque application, des guides utilisateurs, une assistance et des pages légales séparées.
+Site commun de CashDraft, Idle Crystal Corp, StockChef et MyPrivateMap. Il reprend les informations documentées des projets, avec un accueil commun, une présentation de chaque application, des guides utilisateurs, une assistance et des pages légales séparées.
 
 Le site est statique : aucun serveur Node.js, base de données ou compte utilisateur n’est nécessaire en production. Les polices, images et icônes sont locales. Le site ne charge aucun outil publicitaire ou d’analyse et ne dépose aucun cookie. Les publicités AdMob concernent uniquement le jeu, pas le site.
 
@@ -22,6 +22,8 @@ Les descriptions, contacts, politiques de confidentialité, guides et textes de 
 
 Les images d’origine sont conservées dans `assets/`. La première génération les importe depuis les dépôts voisins ; elles sont désormais présentes dans ce dossier, ce qui rend les générations suivantes indépendantes de ces dépôts. Sharp génère les versions WebP. Lucide fournit les icônes et Fontsource les polices DM Sans et Space Grotesk.
 
+Le modèle de données d’application et la procédure pour ajouter une entrée sont décrits dans [docs/NEW_APP_ENTRY.md](docs/NEW_APP_ENTRY.md). Les pages sont générées depuis des descripteurs dans `src/content.mjs` et validées par `src/validate-apps.mjs` ; le générateur ne doit pas dépendre d’un identifiant d’application pour choisir une mise en page.
+
 ## Avant publication
 
 Les **CGV et mentions légales sont provisoires**, signalées dans les pages et exclues de l’indexation par `noindex`. Elles n’existaient pas dans les GitHub Pages fournis. Elles ne doivent pas être considérées comme juridiquement validées. Compléter le statut de l’éditeur, son adresse professionnelle, son immatriculation et sa TVA le cas échéant, le directeur de la publication et les coordonnées du médiateur de la consommation si applicable. Faire vérifier leur adéquation au statut réel de l’éditeur, aux offres et aux territoires de distribution avant de retirer les avertissements.
@@ -31,6 +33,8 @@ La partie concernant le site dans [la confidentialité](dist/confidentialite/ind
 Les politiques des applications conservent les dates d’origine : 2 octobre 2026 pour CashDraft et 30 septembre 2026 pour Idle Crystal Corp. Les deux e-mails de support sont conservés séparément. Aucun tarif, lien App Store, identifiant d’entreprise ou adresse non fourni n’a été inventé. Les conditions Apple au moment de l’achat font référence pour les prix. Aucun achat n’est proposé sur le site.
 
 StockChef n’avait pas de politique web ni d’URL de support dans son dépôt. Sa politique est une nouvelle rédaction du 6 octobre 2026, fondée sur le texte intégré à l’app et ses fonctions documentées, mais signalée comme provisoire et non indexable. Le contact BTBU `aurelienleleu.pro@gmail.com` est proposé et doit être confirmé. Les prix du document d’achats StockChef sont des propositions, pas des tarifs publiés : ils ne sont pas repris comme prix définitifs sur le site.
+
+MyPrivateMap est un projet personnel iOS en développement. La fiche présente ses cinq styles originaux (Blocs, Arcade, Néon, Papier et Glacier), le guidage visuel/vocal, le choix de péages, les favoris GPS et les fonctions de recharge. Elle indique que favoris et profils véhicule sont locaux, sans compte utilisateur ni analytics intégrés, sans laisser entendre qu’aucune donnée ne sort de l’appareil : Photon, Valhalla, OpenFreeMap et les services IRVE de data.gouv.fr reçoivent des requêtes, dont des emprises autour du trajet. Les bornes sont partielles ; prix et disponibilité ne sont pas garantis. Le site ne promet ni fonctionnement complet hors ligne, ni trafic Waze, ni prix ou disponibilité App Store. Le dépôt de développement n’est pas exposé comme une ressource publique ; le support présenté passe par l’e-mail de l’éditeur.
 
 ## Publier avec Cloudflare Pages
 
@@ -120,6 +124,16 @@ Pour StockChef :
 
 Après validation de la politique et activation du domaine, les URL à renseigner dans App Store Connect sont `https://btbu.aurelienleleu.fr/stockchef/support/` et `https://btbu.aurelienleleu.fr/stockchef/confidentialite/`. L’URL marketing peut être `https://btbu.aurelienleleu.fr/stockchef/`.
 
+Pour MyPrivateMap (pages provisoires, le projet n’est pas annoncé comme disponible) :
+
+```text
+/myprivatemap/
+/myprivatemap/documentation/
+/myprivatemap/support/
+/myprivatemap/confidentialite/
+/myprivatemap/conditions/
+```
+
 ## Ce qui reste à finaliser
 
 Pour le site, vérifier le dernier déploiement Cloudflare, le domaine personnalisé et le certificat HTTPS. Le CNAME OVH `btbu` doit pointer vers `btbu-website.pages.dev`. Le contrôle DNS effectué depuis ce poste le 6 octobre 2026 ne résout pas le sous-domaine ; ce résultat reste à confirmer dans OVH/Cloudflare et depuis une autre connexion. Compléter les informations professionnelles et de médiation applicables, les coordonnées de l’hébergeur et la confidentialité du site. Valider la nouvelle politique StockChef et son contact avant de retirer les avertissements.
@@ -132,10 +146,10 @@ Après activation des URL, mettre à jour App Store Connect, les liens dans les 
 
 Après publication et vérification, renseigner les nouvelles URL de support et de confidentialité dans App Store Connect et dans les réglages des applications qui pointent actuellement sur GitHub Pages. Mettre à jour les liens publics des README et les autres fiches de distribution. Garder les anciens GitHub Pages accessibles pendant la transition et y ajouter des liens ou des redirections HTML vers les pages équivalentes du domaine définitif : GitHub Pages ne fournit pas de configuration Apache permettant des redirections HTTP 301 via `.htaccess`.
 
-Les projets CashDraft, IdleCrystalCorp et StockChef n’ont pas été modifiés. Après activation du site, les anciennes pages pourront pointer vers `https://btbu.aurelienleleu.fr/cashdraft/` et `https://btbu.aurelienleleu.fr/idle-crystal-corp/`. Les détails techniques de développement restent dans les dépôts originaux, accessibles depuis les guides utilisateurs.
+Les dépôts des applications n’ont pas été modifiés par cette mise à jour du site. Après activation du site, les anciennes pages pourront pointer vers `https://btbu.aurelienleleu.fr/cashdraft/` et `https://btbu.aurelienleleu.fr/idle-crystal-corp/`. Les détails techniques de développement restent dans les dépôts originaux, accessibles depuis les guides utilisateurs.
 
 ## Vérifications
 
-`npm test` reconstruit les 22 pages et vérifie les liens internes, ancres, ressources, contacts, éléments essentiels des politiques et avertissements juridiques. Il contrôle aussi que StockChef ne reprend pas les promesses et publicités du jeu. Les tests sont dans [tests/site.test.mjs](tests/site.test.mjs).
+`npm test` reconstruit les 27 pages et vérifie les liens internes, ancres, ressources, contacts, éléments essentiels des politiques et avertissements juridiques. Il vérifie aussi que chaque application fournit les champs du descripteur générique, contrôle les limites annoncées pour MyPrivateMap et que StockChef ne reprend pas les promesses et publicités du jeu. Les tests sont dans [tests/site.test.mjs](tests/site.test.mjs).
 
-Une vérification navigateur a été réalisée sur les 22 pages aux largeurs 320, 390 et 1440 pixels : aucune image manquante, aucun débordement horizontal et aucun titre ou lien tronqué détecté. Les FAQ s’ouvrent nativement, les ressources locales se chargent et le bouton d’impression utilise la fonction du navigateur. Cela ne remplace pas la recette sur l’hébergement final, ni la validation juridique des textes.
+Une vérification navigateur historique a été réalisée sur les 22 pages précédentes aux largeurs 320, 390 et 1440 pixels. Elle ne couvre pas les nouvelles pages MyPrivateMap ; celles-ci restent à vérifier visuellement avant publication. La navigation, les ressources locales et l’impression doivent aussi être revérifiées après changement du site. Cela ne remplace pas la recette sur l’hébergement final, ni la validation juridique des textes.

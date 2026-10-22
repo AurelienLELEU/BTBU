@@ -1,0 +1,4 @@
+interface:
+  display_name: "BTBU Site Entry"
+  short_description: "Fiche application cohérente pour le site BTBU"
+  default_prompt: "Utilise $btbu-site-entry pour ajouter cette application au site BTBU avec la structure et les validations communes."

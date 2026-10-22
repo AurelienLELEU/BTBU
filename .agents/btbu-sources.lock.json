@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-22",
+  "reviewScope": "Static review of selected SKILL.md entrypoints, metadata and optional script command inventory; not an exhaustive security audit. No vendor script executed.",
+  "localAugmentation": "Upstream root LICENSE copied into each selected skill directory. SKILL.md unchanged.",
+  "skills": [
+    {"name":"swiftui-expert-skill","repository":"https://github.com/AvdLee/SwiftUI-Agent-Skill","commit":"204dba7c67256a8b707ee3fbc5759a824191974f","path":"skills/swiftui-expert-skill","license":"MIT","licenseFile":"LICENSE","treeSha256":"eccfea2e9147feca32c48faacd8da55dc1633e1302fc00fef9fb80d04bd0bdd1"},
+    {"name":"swift-concurrency","repository":"https://github.com/AvdLee/Swift-Concurrency-Agent-Skill","commit":"d5770817d2622e1585b1f7eaebc791a9cb0959c8","path":"skills/swift-concurrency","license":"MIT","licenseFile":"LICENSE","treeSha256":"db959ac0b20ef233d7f1518342f13fecf8a0e6136920a3582ed0f78d96e9148d"},
+    {"name":"jetpack-compose-performance","repository":"https://github.com/android/skills","commit":"95ea931a1ad8f9b2be132ae0cfb2aad964d71118","path":"jetpack-compose/jetpack-compose-performance","license":"Apache-2.0","licenseFile":"LICENSE.txt","treeSha256":"516f783c1b0cc9929095256e0b2b51fc828f7122779f0412bfdaafc3c9de9126"},
+    {"name":"adaptive","repository":"https://github.com/android/skills","commit":"95ea931a1ad8f9b2be132ae0cfb2aad964d71118","path":"jetpack-compose/adaptive","license":"Apache-2.0","licenseFile":"LICENSE.txt","treeSha256":"243675f2e65b97961ca3dfb89ae6542a40648828130dd3d086b59b2d071a3c84"},
+    {"name":"asc-cli-usage","repository":"https://github.com/rorkai/app-store-connect-cli-skills","commit":"4b496c57b262985df88f2382a65029d3fec3ab95","path":"skills/asc-cli-usage","license":"MIT","licenseFile":"LICENSE","treeSha256":"8a5915c423e92423be5345c6f774084b08ccc7b631ccbc1a8b5882e3d1a95272"},
+    {"name":"asc-metadata-sync","repository":"https://github.com/rorkai/app-store-connect-cli-skills","commit":"4b496c57b262985df88f2382a65029d3fec3ab95","path":"skills/asc-metadata-sync","license":"MIT","licenseFile":"LICENSE","treeSha256":"45abcb2c2735537cba9c7fe511bb91f2ed68182eb6a7f2fd2b5fbaff0c3d1bda"},
+    {"name":"asc-release-flow","repository":"https://github.com/rorkai/app-store-connect-cli-skills","commit":"4b496c57b262985df88f2382a65029d3fec3ab95","path":"skills/asc-release-flow","license":"MIT","licenseFile":"LICENSE","treeSha256":"c33164eef1d0df5977e8535813b1ad7414a7d40142bf07dec6997114a71fe272"},
+    {"name":"asc-submission-health","repository":"https://github.com/rorkai/app-store-connect-cli-skills","commit":"4b496c57b262985df88f2382a65029d3fec3ab95","path":"skills/asc-submission-health","license":"MIT","licenseFile":"LICENSE","treeSha256":"73132762bf7a3838e0dba205ef18d8dcccd5bd67bfacf0b4ec0840a409ce5211"}
+  ]
+}

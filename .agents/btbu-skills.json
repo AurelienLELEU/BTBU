@@ -1,0 +1,14 @@
+{
+  "managedBy": "btbu-skill-sync-v1",
+  "profile": "website",
+  "skills": {
+    "btbu-site-entry": {
+      "source": "skills/btbu-site-entry",
+      "files": {
+        "SKILL.md": "766a3e85d28fa5155bc271cab1a0a8055109d907c66748b8b19bfd61c608a97a",
+        "agents/openai.yaml": "4996b3490ac08d6c4a600e1aa17f5e629a185542330c1898a9a410256f9d56f6",
+        "references/entry-contract.md": "2266faeb88f9fbeee152687aa465b7e53b5c1e767005ed181fced7463874c9f4"
+      }
+    }
+  }
+}

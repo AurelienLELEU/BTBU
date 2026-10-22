@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { readFile, readdir, access, stat } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { apps, sections, documents } from '../src/content.mjs';
+import { apps, sections, documents, salesTerms } from '../src/content.mjs';
+import { validateAppRegistry } from '../src/validate-apps.mjs';
 import { validateRecipeFeed } from '../src/stockchef/validate.mjs';
 
 const output = resolve(dirname(fileURLToPath(import.meta.url)), '../dist');
@@ -57,9 +58,10 @@ async function htmlFiles(directory) {
 }
 
 test('Chaque application possède ses cinq pages publiques et son contact', async () => {
-  assert.deepEqual(apps.map(app => app.id), ['cashdraft', 'idle-crystal-corp', 'stockchef']);
-  assert.notEqual(apps[0].email, apps[1].email);
+  assert.equal(new Set(apps.map(app => app.id)).size, apps.length);
   for (const app of apps) {
+    const generated = await htmlFiles(resolve(output, app.id));
+    assert.equal(generated.length, sections.length, `${app.id}: nombre de routes générées`);
     for (const section of sections) {
       const file = resolve(output, app.id, section.id === 'index' ? '' : section.id, 'index.html');
       const html = await readFile(file, 'utf8');
@@ -70,9 +72,91 @@ test('Chaque application possède ses cinq pages publiques et son contact', asyn
   }
 });
 
+test('Le contrat de registre rejette slugs, URL et chemins d’assets dangereux', () => {
+  const clone = () => structuredClone(apps);
+  const invalidSlug = clone(); invalidSlug[0].id = '../accueil';
+  assert.throws(() => validateAppRegistry(invalidSlug, documents), /Slug/);
+  const duplicateSlug = clone(); duplicateSlug[1].id = duplicateSlug[0].id;
+  assert.throws(() => validateAppRegistry(duplicateSlug, documents), /dupliqué/);
+  const httpURL = clone(); httpURL[0].support = 'http://example.org/support';
+  assert.throws(() => validateAppRegistry(httpURL, documents), /HTTPS/);
+  const credentialURL = clone(); credentialURL[0].repository = 'https://user:pass@example.org/repo';
+  assert.throws(() => validateAppRegistry(credentialURL, documents), /identifiant/);
+  const sourceTraversal = clone(); sourceTraversal[0].assets[0].source = '../secret.png';
+  assert.throws(() => validateAppRegistry(sourceTraversal, documents), /assets.*source/);
+  const outputTraversal = clone(); outputTraversal[0].assets[0].output = '../secret.webp';
+  assert.throws(() => validateAppRegistry(outputTraversal, documents), /output/);
+  const implicitFallback = clone(); implicitFallback[0].assets[0].sourceFallback = 'cashdraft-legacy.png';
+  assert.throws(() => validateAppRegistry(implicitFallback, documents), /allowSourceFallback/);
+  const explicitFallback = clone();
+  explicitFallback[0].assets[0].sourceFallback = 'cashdraft-legacy.png';
+  explicitFallback[0].assets[0].allowSourceFallback = true;
+  assert.equal(validateAppRegistry(explicitFallback, documents), true);
+});
+
+test('Chaque application fournit le descripteur générique complet et ses contenus', async () => {
+  assert.equal(new Set(apps.map(app => app.id)).size, apps.length);
+  for (const app of apps) {
+    for (const field of ['name', 'category', 'platform', 'platformIcon', 'tagline', 'description', 'email', 'repository', 'support', 'iconAsset', 'featuresHeading', 'documentationIntro']) {
+      assert.ok(typeof app[field] === 'string' && app[field].trim(), `${app.id}.${field}`);
+    }
+    assert.ok(Array.isArray(app.assets) && app.assets.length > 0, `${app.id}.assets`);
+    for (const asset of app.assets) {
+      assert.ok(asset.source && asset.output && Number.isFinite(asset.width) && asset.width > 0, `${app.id}.asset`);
+      await access(resolve(output, 'assets', asset.output));
+    }
+    assert.ok(['icon-caption', 'image'].includes(app.card.kind), `${app.id}.card.kind`);
+    assert.ok(app.card.icon && app.card.background, `${app.id}.card`);
+    assert.ok(app.pageVisual === null || ['image', 'screenshot'].includes(app.pageVisual.kind), `${app.id}.pageVisual`);
+    assert.ok(app.features.length > 0 && app.features.every(feature => feature.length === 3), `${app.id}.features`);
+    assert.ok(Array.isArray(app.privacyLinks) && typeof app.offers.appleLinks === 'boolean', `${app.id}.privacy/offers`);
+    const content = documents[app.id];
+    assert.ok(content?.documentation?.length && content?.confidentialite?.length && content?.faq?.length, `${app.id}.documents`);
+    for (const section of ['documentation', 'confidentialite', 'faq']) {
+      assert.ok(content[section].every(entry => Array.isArray(entry) && entry.length >= 2 && entry.every(value => typeof value === 'string')), `${app.id}.${section}`);
+    }
+    assert.ok(salesTerms(app).length > 0, `${app.id}.salesTerms`);
+  }
+});
+
+test('MyPrivateMap expose ses limites de confidentialité, disponibilité et offre sans surpromesse', async () => {
+  const app = apps.find(item => item.id === 'myprivatemap');
+  const privacy = JSON.stringify(documents.myprivatemap.confidentialite);
+  const faq = JSON.stringify(documents.myprivatemap.faq);
+  const terms = JSON.stringify(salesTerms(app));
+  for (const term of ['photon.komoot.io', 'valhalla1.openstreetmap.de', 'tiles.openfreemap.org', 'tabular-api.data.gouv.fr', 'proxy.transport.data.gouv.fr', 'adresse IP', 'corridor', 'destination', 'aucune donnée ne quitte']) assert.ok(privacy.includes(term), term);
+  const faqLower = faq.toLocaleLowerCase('fr');
+  for (const term of ['waze', 'hors ligne', 'aucune date']) assert.ok(faqLower.includes(term), term);
+  assert.match(app.repository, /^https:\/\/github\.com\/AurelienLELEU\/MyPrivateMap$/);
+  assert.equal(app.status.label, 'Projet personnel · En développement');
+  assert.equal(app.repositoryPublic, false);
+  assert.equal(app.offers.appleLinks, false);
+  assert.match(terms, /Aucun achat ni paiement n’est effectué sur ce site/);
+  assert.doesNotMatch(terms, /La commande est confirmée|20 crédits|Studio|Pro Lifetime/);
+  const generatedTerms = await readFile(resolve(output, 'myprivatemap/conditions/index.html'), 'utf8');
+  const generatedSupport = await readFile(resolve(output, 'myprivatemap/support/index.html'), 'utf8');
+  const generatedDocs = await readFile(resolve(output, 'myprivatemap/documentation/index.html'), 'utf8');
+  const generatedPrivacy = await readFile(resolve(output, 'myprivatemap/confidentialite/index.html'), 'utf8');
+  const generatedLanding = await readFile(resolve(output, 'myprivatemap/index.html'), 'utf8');
+  for (const page of [generatedTerms, generatedSupport, generatedDocs, generatedPrivacy]) assert.doesNotMatch(page, /github\.com\/AurelienLELEU\/MyPrivateMap/i);
+  assert.match(generatedTerms, /Aucune offre ni aucun prix n’est annoncé/);
+  assert.doesNotMatch(generatedTerms, /conditions relatives aux achats numériques/);
+  assert.doesNotMatch(generatedSupport, /Un achat/);
+  assert.match(generatedSupport, /mailto:aurelienleleu\.pro@gmail\.com/);
+  assert.doesNotMatch(generatedSupport, /ticket GitHub/i);
+  assert.match(generatedDocs, /dépôt de développement n’est pas présenté comme une ressource publique/);
+  assert.match(generatedDocs, /sept matériaux originaux/);
+  assert.match(generatedDocs, /cinq secondes en avant-plan/);
+  assert.match(generatedPrivacy, /tabular-api\.data\.gouv\.fr/);
+  for (const term of ['Blocs', 'Arcade', 'Néon', 'Papier', 'Glacier', 'affiliation à Minecraft', 'Guidage visuel et vocal', 'Péages au choix', 'Favoris GPS', 'couverture reste partielle', 'prix final']) assert.ok(generatedLanding.includes(term), term);
+  const home = await readFile(resolve(output, 'index.html'), 'utf8');
+  assert.match(home, /--card-image-fit:contain/);
+});
+
 test('Tous les liens, ancres, images, scripts et styles internes existent', async () => {
   for (const file of await htmlFiles(output)) {
     const html = await readFile(file, 'utf8');
+    assert.doesNotMatch(html, /[\t ]+$/m, `${file}: espaces de fin de ligne générés`);
     const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]));
     assert.equal(ids.size, [...html.matchAll(/\bid="([^"]+)"/g)].length, `IDs dupliqués : ${file}`);
     for (const [, reference] of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
@@ -96,7 +180,7 @@ test('Les politiques conservent les éléments sensibles des pages originales', 
 });
 
 test('Les documents juridiques incomplets sont explicitement provisoires et non indexables', async () => {
-  for (const path of ['conditions/index.html', 'mentions-legales/index.html', 'stockchef/confidentialite/index.html', ...apps.map(app => `${app.id}/conditions/index.html`)]) {
+  for (const path of ['conditions/index.html', 'mentions-legales/index.html', ...apps.filter(app => app.privacyDraft).map(app => `${app.id}/confidentialite/index.html`), ...apps.map(app => `${app.id}/conditions/index.html`)]) {
     const html = await readFile(resolve(output, path), 'utf8');
     assert.match(html, /provisoire/i);
     assert.match(html, /noindex,follow/);
@@ -126,10 +210,9 @@ test('Le site statique reçoit les en-têtes de sécurité et les URL de product
     assert.ok(html.includes(`<meta property="og:image" content="${domain}/assets/social.jpg">`));
   }
   const sitemap = await readFile(resolve(output, 'sitemap.xml'), 'utf8');
-  assert.ok(sitemap.includes(`<loc>${domain}/cashdraft/</loc>`));
-  assert.ok(sitemap.includes(`<loc>${domain}/idle-crystal-corp/</loc>`));
-  assert.ok(sitemap.includes(`<loc>${domain}/stockchef/</loc>`));
+  for (const app of apps) assert.ok(sitemap.includes(`<loc>${domain}/${app.id}/</loc>`), app.id);
   assert.ok(!sitemap.includes(`${domain}/stockchef/confidentialite/`));
+  assert.ok(!sitemap.includes(`${domain}/myprivatemap/confidentialite/`));
   assert.doesNotMatch(sitemap, /conditions|mentions-legales|404/);
   const robots = await readFile(resolve(output, 'robots.txt'), 'utf8');
   assert.ok(robots.includes(`Sitemap: ${domain}/sitemap.xml`));
@@ -138,7 +221,7 @@ test('Le site statique reçoit les en-têtes de sécurité et les URL de product
 test('StockChef possède ses propres visuels et ne reprend pas les promesses du jeu', async () => {
   assert.equal((await htmlFiles(output)).length, 7 + apps.length * sections.length);
   const home = await readFile(resolve(output, 'index.html'), 'utf8');
-  assert.match(home, /01 — 03/);
+  assert.ok(home.includes(`01 — ${String(apps.length).padStart(2, '0')}`));
   for (const section of sections) {
     const html = await readFile(resolve(output, 'stockchef', section.id === 'index' ? '' : section.id, 'index.html'), 'utf8');
     assert.match(html, /stockchef\.webp/);
@@ -152,11 +235,13 @@ test('StockChef possède ses propres visuels et ne reprend pas les promesses du 
   assert.match(terms, /recharge consommable de 20 scans/);
   assert.match(terms, /sans abonnement/);
   assert.doesNotMatch(terms, /Studio|contenu du jeu|Boutique →/);
+  const idleCard = await readFile(resolve(output, 'index.html'), 'utf8');
+  assert.match(idleCard, /--card-image-fit:contain/);
 });
 
 test('Les mots-clés sous les logos restent présents sur l’accueil', async () => {
   const home = await readFile(resolve(output, 'index.html'), 'utf8');
-  assert.ok(home.includes('<span class="art-caption">DEVIS / FACTURES / SÉRÉNITÉ</span>'));
-  assert.ok(home.includes('<span class="art-caption">TICKETS / STOCK / RECETTES</span>'));
-  assert.equal((home.match(/class="art-caption"/g) || []).length, 2);
+  const captionApps = apps.filter(app => app.card.caption);
+  for (const app of captionApps) assert.ok(home.includes(`<span class="art-caption">${app.card.caption}</span>`), app.id);
+  assert.equal((home.match(/class="art-caption"/g) || []).length, captionApps.length);
 });
